@@ -11,11 +11,27 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 
-<body class="">
-    <div class="text-center">
-        <h1 class="font-body text-primary">Welcome to Laravel</h1>
-        <p class="mt-4">This is a Laravel application with Vite.js integration.</p>
-    </div>
+<body>
+    <!-- Navigation -->
+    <x-navbar />
+
+    <!-- Hero Section -->
+    <x-hero-section />
+
+    <!-- About Section -->
+    <x-about-section />
+
+    <!-- Services Offered -->
+    <x-services-section />
+
+    <!-- Testimonials Section -->
+    <x-testimonials-section />
+
+    <!-- Contact Section -->
+    <x-contact-section />
+
+    <!-- Footer -->
+    <x-footer />
 </body>
 
 </html>
