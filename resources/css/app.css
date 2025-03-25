@@ -1,0 +1,74 @@
+/* Import the fonts */
+@import url("https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:ital,wght@0,200..800;1,200..800&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+@import "tailwindcss";
+
+@source '../../vendor/laravel/framework/src/Illuminate/Pagination/resources/views/*.blade.php';
+@source '../../storage/framework/views/*.php';
+@source '../**/*.blade.php';
+@source '../**/*.js';
+
+@theme {
+    /* Fonts */
+    --font-body: "Roboto", ui-sans-serif, system-ui, sans-serif;
+    --font-heading: "Poppins", sans-serif;
+    --font-tertiary: "Plus Jakarta Sans", sans-serif;
+
+    /* Colors */
+    --color-primary: #1f3b73; /* Deep Navy Blue for primary elements like buttons & headers */
+    --color-primary-hover: #456990; /* Slightly lighter tone for hover states */
+    --color-secondary: #2e7d32; /* Forest Green for secondary actions and highlights */
+    --color-accent: #e25822; /* Burnt Orange for CTAs, links & key accents */
+    --color-light-gray: #f4f4f4; /* Light Gray for backgrounds */
+    --color-dark-text: #424242; /* Deep Charcoal for primary text */
+    --color-border: #a3a3a3; /* For borders & secondary texts */
+}
+
+/* Custom utilities */
+@layer utilities {
+    /* Font Family */
+    .font-body {
+        font-family: var(--font-body);
+    }
+    .font-heading {
+        font-family: var(--font-heading);
+    }
+
+    /* Text Colors */
+    .text-primary {
+        color: var(--color-primary);
+    }
+    .text-secondary {
+        color: var(--color-secondary);
+    }
+    .text-accent {
+        color: var(--color-accent);
+    }
+    .text-dark {
+        color: var(--color-dark-text);
+    }
+
+    /* Background Colors */
+    .bg-light {
+        background-color: var(--color-light-gray);
+    }
+    .bg-white {
+        background-color: var(--color-white);
+    }
+    .bg-primary {
+        background-color: var(--color-primary);
+    }
+    .bg-secondary {
+        background-color: var(--color-secondary);
+    }
+    .bg-accent {
+        background-color: var(--color-accent);
+    }
+
+    /* Border Colors */
+    .border-default {
+        border-color: var(--color-border);
+    }
+}
