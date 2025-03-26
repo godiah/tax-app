@@ -35,6 +35,9 @@
     .font-heading {
         font-family: var(--font-heading);
     }
+    .font-secondary {
+        font-family: var(--font-tertiary);
+    }
 
     /* Text Colors */
     .text-primary {
@@ -104,12 +107,12 @@ html {
 }
 
 .nav-link:hover {
-    color: var(--color-primary-hover);
+    color: var(--color-accent);
 }
 
 .nav-link:hover::after {
     width: 100%;
-    background-color: var(--color-primary-hover);
+    background-color: var(--color-accent);
 }
 
 .nav-link.active {

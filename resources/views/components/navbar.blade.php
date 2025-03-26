@@ -1,13 +1,14 @@
 <!-- Navigation Bar -->
 <header>
     <nav class="bg-white shadow-md fixed w-full top-0 z-50 font-body">
+        <!-- Info Bar -->
+        <x-info-details />
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="/" class="flex items-center">
-                        <img class="h-12 md:h-16 w-auto" src="{{ asset('') }}" alt="Logo">
-                        {{-- <span class="ml-3 font-heading font-bold text-xl text-dark hidden sm:block">OptiRoute</span> --}}
+                        <img class="h-12 w-auto" src="{{ asset('images/logo.jpg') }}" alt="Logo">
                     </a>
                 </div>
 
@@ -31,12 +32,12 @@
 
                     <a href="#contact"
                         class="bg-gradient-to-r from-primary to-secondary shadow-lg hover:shadow-xl hover:from-primary/90 hover:to-secondary/90 text-white px-5 py-2.5 rounded-md text-sm font-medium transition-colors duration-200 flex items-center ml-4">
-                        <span>Get in touch</span>
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24"
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                             stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                                d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                         </svg>
+                        Schedule a Consultation
                     </a>
                 </div>
 
@@ -61,24 +62,32 @@
                     class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
                     Home
                 </a>
-                <a href="#how-it-works"
+                <a href="#about"
                     class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
-                    How It Works
+                    About
                 </a>
-                <a href="#benefits"
+                <a href="#services"
                     class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
-                    Benefits
+                    Services
+                </a>
+                <a href="#testimonials"
+                    class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
+                    Testimonials
+                </a>
+                <a href="#contact"
+                    class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
+                    Contact
                 </a>
 
                 <a href="#demo"
                     class="block flex text-white px-4 py-2.5 rounded-md text-base font-medium transition-colors duration-200 mt-4 items-center justify-center
                 bg-gradient-to-r from-primary to-secondary shadow-lg hover:shadow-xl">
-                    <span>Book a Demo</span>
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-2" fill="none" viewBox="0 0 24 24"
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                     </svg>
+                    Schedule a Consultation
                 </a>
             </div>
         </div>
@@ -89,7 +98,6 @@
     document.addEventListener('DOMContentLoaded', function() {
         // Get all nav links
         const navLinks = document.querySelectorAll('.nav-link');
-
         // Get all sections that correspond to nav links
         const sections = [];
         navLinks.forEach(link => {
@@ -100,62 +108,52 @@
                 sections.push(section);
             }
         });
-
         // Function to set active link based on hash
         const setActiveByHash = () => {
             const currentHash = window.location.hash || '#home';
             // Remove active class from all links
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                link.classList.add('text-dark-text', 'hover:text-primary-blue');
-                link.classList.remove('text-primary-blue');
+                link.classList.add('text-dark', 'hover:text-accent');
+                link.classList.remove('text-primary');
             });
-
             // Add active class to current link
             navLinks.forEach(link => {
                 if (link.getAttribute('href') === currentHash) {
-                    link.classList.add('active', 'text-primary-blue');
-                    link.classList.remove('text-dark-text', 'hover:text-primary-blue');
+                    link.classList.add('active', 'text-primary', 'hover:text-accent');
+                    link.classList.remove('text-dark');
                 }
             });
         };
-
         // Function to set active link based on scroll position
         const setActiveByScroll = () => {
             let currentSection = '';
-
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.offsetHeight;
-
                 // Check if we've scrolled to this section (with a small offset to trigger earlier)
                 if (window.scrollY >= (sectionTop - 100)) {
                     currentSection = section.getAttribute('id');
                 }
             });
-
             if (currentSection !== '') {
                 // Remove active class from all links
                 navLinks.forEach(link => {
                     link.classList.remove('active');
-                    link.classList.add('text-dark-text', 'hover:text-primary-blue');
-                    link.classList.remove('text-primary-blue');
-
+                    link.classList.add('text-dark', 'hover:text-accent');
+                    link.classList.remove('text-primary');
                     // Add active class to current section's link
                     if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.classList.add('active', 'text-primary-blue');
-                        link.classList.remove('text-dark-text', 'hover:text-primary-blue');
+                        link.classList.add('active', 'text-primary', 'hover:text-accent');
+                        link.classList.remove('text-dark');
                     }
                 });
             }
         };
-
         // Set active link on page load
         setActiveByHash();
-
         // Set active link when hash changes (when clicking nav links)
         window.addEventListener('hashchange', setActiveByHash);
-
         // Set active link when scrolling
         window.addEventListener('scroll', setActiveByScroll);
     });
