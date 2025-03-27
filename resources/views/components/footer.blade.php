@@ -3,7 +3,7 @@
         {{-- Logo and Description Section --}}
         <div class="flex flex-col items-center  md:items-start space-y-4">
             <img src="{{ asset('images/logo-footer.png') }}" alt="Logo"
-                class="h-16 w-auto mb-4 transform transition-transform hover:scale-105">
+                class="h-20 w-auto mb-4 transform transition-transform hover:scale-105">
             <p class="text-sm opacity-80 font-secondary text-center md:text-left leading-relaxed">
                 Providing expert tax consultation and financial strategies for individuals and businesses.
             </p>
