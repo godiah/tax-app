@@ -18,7 +18,7 @@
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/corporate.jpg') }}" alt="Corporate Tax Strategy and Planning"
+                    <img src="{{ asset('images/services/strategies.jpg') }}" alt="Corporate Tax Strategy and Planning"
                         class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
@@ -51,8 +51,9 @@
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/corporate.jpg') }}" alt="Corporate Tax Strategy and Planning"
-                        class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <img src="{{ asset('images/services/individual.jpg!w700wp') }}"
+                        alt="Corporate Tax Strategy and Planning"
+                        class="w-full h-[298px] object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
 
@@ -84,7 +85,7 @@
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/corporate.jpg') }}" alt="Litigation & Tax Disputes"
+                    <img src="{{ asset('images/services/court.jpg') }}" alt="Litigation & Tax Disputes"
                         class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
@@ -116,7 +117,7 @@
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/corporate.jpg') }}" alt="Financial Strategy Advisory"
+                    <img src="{{ asset('images/services/advise.jpg') }}" alt="Financial Strategy Advisory"
                         class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
@@ -149,7 +150,7 @@
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/corporate.jpg') }}" alt="Tax Audit Support"
+                    <img src="{{ asset('images/services/tax-audit.jpg') }}" alt="Tax Audit Support"
                         class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>

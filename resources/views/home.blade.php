@@ -25,8 +25,8 @@
     <!-- Services Offered -->
     <x-services-section />
 
-    <!-- Testimonials Section -->
-    <x-testimonials-section />
+    <!-- Testimonials Section
+    <x-testimonials-section />-->
 
     <!-- Contact Section -->
     <x-contact-section />
