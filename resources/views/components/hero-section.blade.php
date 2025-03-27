@@ -13,19 +13,19 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
                     </svg>
-                    Expert Tax Consultancy
+                    Precison. Compliance. Peace of Mind
                 </span>
             </div>
 
             <h1 class="text-4xl md:text-5xl font-heading font-bold leading-tight text-center" data-aos="fade-up"
                 data-aos-duration="900" data-aos-delay="400">
-                <span class="block">Tailored Tax Solutions</span>
-                <span class="text-accent block">Designed for Your Success</span>
+                <span class="block">Beyond Numbers</span>
+                <span class="text-accent block">Tax Solutions That Work</span>
             </h1>
 
             <p class="text-lg font-body max-w-xl mx-auto text-gray-100 leading-relaxed text-center" data-aos="fade-up"
                 data-aos-duration="1000" data-aos-delay="600">
-                Comprehensive tax strategies tailored to your unique financial landscape. We transform complex tax
+                We offer comprehensive tax strategies tailored to your unique financial landscape. We transform tax
                 challenges into opportunities for growth and savings.
             </p>
 
