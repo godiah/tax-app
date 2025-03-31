@@ -28,6 +28,10 @@
 
 /* Custom utilities */
 @layer utilities {
+    .bg-blog-paper-accent {
+        background-color: rgba(226, 88, 34, 0.01);
+        background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4' viewBox='0 0 4 4'%3E%3Cpath fill='%23e25822' fill-opacity='0.15' d='M1 3h1v1H1V3zm2-2h1v1H3V1z'%3E%3C/path%3E%3C/svg%3E");
+    }
     /* Font Family */
     .font-body {
         font-family: var(--font-body);

@@ -28,6 +28,9 @@
     <!-- Testimonials Section
     <x-testimonials-section />-->
 
+    <!-- Blog Section -->
+    <x-blog-section />
+
     <!-- Contact Section -->
     <x-contact-section />
 

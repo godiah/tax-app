@@ -26,6 +26,9 @@
                     {{-- <x-navbar-nav-links href="#testimonials" :active="request()->is('testimonials')">
                         Testimonials
                     </x-navbar-nav-links> --}}
+                    <x-navbar-nav-links href="#blog" :active="request()->is('blog')">
+                        Blog
+                    </x-navbar-nav-links>
                     <x-navbar-nav-links href="#contact" :active="request()->is('contact')">
                         Contact
                     </x-navbar-nav-links>
@@ -74,6 +77,10 @@
                     class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
                     Testimonials
                 </a> --}}
+                <a href="#blog"
+                    class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
+                    Blog
+                </a>
                 <a href="#contact"
                     class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
                     Contact
