@@ -15,22 +15,23 @@
         </div>
 
         <div class="grid md:grid-cols-3 gap-6">
+            <!-- Strategic Tax Planning and Structuring -->
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/strategies.jpg') }}" alt="Corporate Tax Strategy and Planning"
-                        class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <img src="{{ asset('images/services/planning-2.jpg') }}" alt="Tax Strategy and Planning"
+                        class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
 
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-xl font-heading font-semibold text-primary mb-3 tracking-tight">
-                        Corporate Tax Strategy and Planning
+                        Strategic Tax Planning and Structuring
                     </h3>
 
                     <p class="text-dark-text mb-4 font-body text-justify line-clamp-3 flex-grow opacity-80">
-                        Optimize your business tax strategy to minimize your tax liability and maximize your
-                        profitability.
+                        Proactive tax strategies tailored to your business needs, optimizing your tax position while
+                        ensuring compliance.
                     </p>
 
                     <div class="mt-auto">
@@ -48,23 +49,23 @@
                 </div>
             </div>
 
+            <!-- Tax Compliance and Risk Management -->
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/individual.jpg!w700wp') }}"
-                        alt="Corporate Tax Strategy and Planning"
-                        class="w-full h-[298px] object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <img src="{{ asset('images/services/compliance-2.jpg') }}" alt="Corporate Tax Strategy and Planning"
+                        class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
 
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-xl font-heading font-semibold text-primary mb-3 tracking-tight">
-                        Individual Tax Optimization and Compliance
+                        Tax Compliance and Risk Management
                     </h3>
 
                     <p class="text-dark-text mb-4 font-body text-justify line-clamp-3 flex-grow opacity-80">
-                        Personalized tax strategies to help individuals minimize tax burden and maximize financial
-                        potential through comprehensive analysis and strategic planning.
+                        Comprehensive compliance services to ensure your business meets all tax obligations accurately
+                        and on time.
                     </p>
 
                     <div class="mt-auto">
@@ -82,21 +83,23 @@
                 </div>
             </div>
 
+            <!-- Tax Dispute Resolution & Advocacy -->
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/court.jpg') }}" alt="Litigation & Tax Disputes"
-                        class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <img src="{{ asset('images/services/litigation-2.jpg') }}" alt="Litigation & Tax Disputes"
+                        class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
 
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-xl font-heading font-semibold text-primary mb-3 tracking-tight">
-                        Litigation & Tax Disputes
+                        Tax Dispute Resolution and Advocacy
                     </h3>
 
                     <p class="text-dark-text mb-4 font-body text-justify line-clamp-3 flex-grow opacity-80">
-                        Expert representation in tax audits and disputes to achieve the best possible outcome.
+                        Expert representation during tax disputes, including assessments, objections, negotiations, and
+                        appeals to achieve favorable outcomes.
                     </p>
 
                     <div class="mt-auto">
@@ -114,22 +117,23 @@
                 </div>
             </div>
 
+            <!-- Personalized Financial Guidance -->
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/advise.jpg') }}" alt="Financial Strategy Advisory"
-                        class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <img src="{{ asset('images/services/guidance.png') }}" alt="Personalized Financial Guidance"
+                        class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
 
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-xl font-heading font-semibold text-primary mb-3 tracking-tight">
-                        Financial Strategy Advisory
+                        Personalized Financial Guidance
                     </h3>
 
                     <p class="text-dark-text mb-4 font-body text-justify line-clamp-3 flex-grow opacity-80">
-                        Comprehensive financial planning and strategic advice to support long-term business and personal
-                        financial goals.
+                        Individualized financial guidance aligned with your tax situation and goals so as to optimize
+                        your financial position
                     </p>
 
                     <div class="mt-auto">
@@ -147,22 +151,57 @@
                 </div>
             </div>
 
+            <!-- Tax Training -->
+            <div data-aos="fade-up" data-aos-delay="100"
+                class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
+                <div class="relative overflow-hidden">
+                    <img src="{{ asset('images/services/tax-training.png') }}" alt="Tax Training"
+                        class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
+                    <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
+                </div>
+
+                <div class="p-6 flex flex-col flex-grow">
+                    <h3 class="text-xl font-heading font-semibold text-primary mb-3 tracking-tight">
+                        Tax Training
+                    </h3>
+
+                    <p class="text-dark-text mb-4 font-body text-justify line-clamp-3 flex-grow opacity-80">
+                        Specialized training programs designed to enhance your team's understanding of relevant tax
+                        regulations and practices.
+                    </p>
+
+                    <div class="mt-auto">
+                        <a href="#contact"
+                            class="group/link flex items-center text-secondary font-medium hover:text-primary transition-colors duration-300">
+                            <span class="mr-2 transition-transform group-hover/link:translate-x-1">Learn More</span>
+                            <svg xmlns="http://www.w3.org/2000/svg"
+                                class="h-5 w-5 transition-transform group-hover/link:translate-x-1" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tax Audit -->
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
                     <img src="{{ asset('images/services/tax-audit.jpg') }}" alt="Tax Audit Support"
-                        class="w-full h-auto object-cover transition-transform duration-300 group-hover:scale-105" />
+                        class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
 
                 <div class="p-6 flex flex-col flex-grow">
                     <h3 class="text-xl font-heading font-semibold text-primary mb-3 tracking-tight">
-                        Tax Audit Support
+                        Tax Audits and Health Checks
                     </h3>
 
                     <p class="text-dark-text mb-4 font-body text-justify line-clamp-3 flex-grow opacity-80">
-                        Comprehensive support during tax audits, ensuring accurate documentation and representing your
-                        interests.
+                        Thorough examination of your tax affairs to identify areas of risk, opportunity, and
+                        improvement.
                     </p>
 
                     <div class="mt-auto">
@@ -171,44 +210,6 @@
                             <span class="mr-2 transition-transform group-hover/link:translate-x-1">Learn More</span>
                             <svg xmlns="http://www.w3.org/2000/svg"
                                 class="h-5 w-5 transition-transform group-hover/link:translate-x-1" fill="none"
-                                viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
-                            </svg>
-                        </a>
-                    </div>
-                </div>
-            </div>
-
-            <div data-aos="fade-up" data-aos-delay="100"
-                class="relative bg-gradient-to-br from-primary to-secondary text-white rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:shadow-2xl">
-                <div class="absolute inset-0 bg-gradient-to-br from-primary/80 to-secondary/80 opacity-90"></div>
-
-                <div class="relative z-10 p-6 flex flex-col items-center justify-center text-center h-full">
-                    <div class="max-w-md">
-                        <div class="mb-4 flex items-center justify-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 mr-3 text-white opacity-75"
-                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                    d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z" />
-                            </svg>
-                            <h3 class="text-xl font-heading font-bold tracking-tight">
-                                Need a Customized Solution?
-                            </h3>
-                        </div>
-                        <p class="mb-6 font-body text-center opacity-90 leading-relaxed">
-                            Every financial situation is unique. Let's craft a tailored approach that precisely
-                            addresses your specific needs, providing personalized strategies designed to optimize your
-                            financial potential.
-                        </p>
-
-                        <a href="#contact"
-                            class="group/cta inline-flex items-center justify-center bg-white text-primary font-medium py-3 px-6 rounded-lg hover:bg-light-gray hover:shadow-md transition-all duration-300">
-                            <span class="mr-2 transition-transform group-hover/cta:translate-x-1">
-                                Request Custom Solution
-                            </span>
-                            <svg xmlns="http://www.w3.org/2000/svg"
-                                class="h-5 w-5 transition-transform group-hover/cta:translate-x-1" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M14 5l7 7m0 0l-7 7m7-7H3" />
