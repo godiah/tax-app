@@ -11,11 +11,11 @@
                 <div class="absolute bottom-6 left-6 right-6 bg-white/90 backdrop-blur-sm rounded-xl p-4 shadow-lg flex items-center justify-center"
                     data-aos="zoom-in" data-aos-delay="500">
                     <div class="flex-grow">
-                        <h3 class="text-xl font-heading font-semibold text-primary">John Doe, CPA</h3>
+                        <h3 class="text-xl font-heading font-semibold text-primary">Duncan Gateru, CPA</h3>
                         <p class="text-dark-text text-sm">Senior Tax Consultant</p>
                     </div>
                     <div class="flex space-x-3 ml-4">
-                        <a href="https://www.linkedin.com/in/johndoe" target="_blank"
+                        <a href="https://www.linkedin.com/in/duncan-gateru-33bb02145/" target="_blank"
                             class="text-secondary hover:text-primary transition-colors duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -27,7 +27,7 @@
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
                         </a>
-                        <a href="mailto:john.doe@taxconsultancy.com"
+                        <a href="mailto:dungateru@gmail.com"
                             class="text-secondary hover:text-primary transition-colors duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -67,9 +67,11 @@
                         <h3 class="text-xl font-heading font-semibold text-primary">Professional Background</h3>
                     </div>
                     <p class="text-dark-text font-body text-justify">
-                        With over 12 years of experience in tax consulting, I specialize in comprehensive tax strategies
-                        for businesses and individuals in Kenya. My approach combines deep technical knowledge with
-                        personalized financial guidance.
+                        As a detail oriented tax professional, I have over 10 years experience of hands-on in-depth tax analysis. 
+                        The knowledge gained has enabled provision of bespoke tax advice to clients in any tax related issues 
+                        and helping them to leverage on the tax laws. I am accomplished in development of important
+                        strategies for improving financial performance, improving internal controls, and reducing tax liabilities 
+                        for individuals, partnerships and corporations.
                     </p>
                 </div>
 
@@ -90,7 +92,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            Corporate Tax Planning
+                            Strategic Tax planning and Structuring
                         </li>
                         <li class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-secondary mr-2" fill="none"
@@ -98,7 +100,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            Individual Tax Optimization
+                            Tax Compliance and Risk Management
                         </li>
                         <li class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-secondary mr-2"
@@ -106,7 +108,7 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            International Tax Compliance
+                            Tax health checks / Tax Audits
                         </li>
                         <li class="flex items-center">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-secondary mr-2"
@@ -114,7 +116,15 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            Strategic Financial Advisory
+                            Advocacy and representations during tax disputes
+                        </li>
+                                                <li class="flex items-center">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-secondary mr-2"
+                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            Tax Training
                         </li>
                     </ul>
                 </div>
@@ -130,13 +140,17 @@
                         <h3 class="text-xl font-heading font-semibold">Professional Journey</h3>
                     </div>
                     <div class="space-y-2">
-                        <div>
-                            <p class="font-medium">Senior Tax Consultant | Global Tax Solutions</p>
-                            <p class="text-sm">2015 - Present</p>
+                         <div>
+                            <p class="font-medium">Tax Consultant | Taxgen Consultancy LLP </p>
+                            <p class="text-sm">2020 - Present</p>
                         </div>
                         <div>
-                            <p class="font-medium">Tax Analyst | Kenya Revenue Advisory</p>
-                            <p class="text-sm">2012 - 2015</p>
+                            <p class="font-medium">Director Internal Audt and Tax | Ruai Family Hospital</p>
+                            <p class="text-sm">2020 - Present</p>
+                        </div>
+                        <div>
+                            <p class="font-medium">Lead Tax Analyst | Kenya Revenue Authority</p>
+                            <p class="text-sm">2009 - 2020</p>
                         </div>
                     </div>
                 </div>
