@@ -51,9 +51,9 @@
                                     d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
                             </svg>
                         </div>
-                        <a href="mailto:john.doe@taxconsultancy.com"
+                        <a href="mailto:dungateru@gmail.com"
                             class="text-dark-text hover:text-primary transition-colors duration-300">
-                            john.doe@taxconsultancy.com
+                            dungateru@gmail.com
                         </a>
                     </div>
                     <div class="flex items-center group">
@@ -65,9 +65,9 @@
                                     d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
                             </svg>
                         </div>
-                        <a href="tel:+254712345678"
+                        <a href="tel:+254723881440"
                             class="text-dark-text hover:text-primary transition-colors duration-300">
-                            +254 (0) 712 345 678
+                            +254 (0) 723 881 440
                         </a>
                     </div>
                     <div class="flex items-center group">
@@ -99,15 +99,15 @@
                                 8:00 AM - 5:00 PM
                             </span>
                         </div>
-                        <div class="flex justify-between items-center group">
+                        {{-- <div class="flex justify-between items-center group">
                             <span class="text-dark-text">Saturday</span>
                             <span
                                 class="text-secondary bg-secondary/10 px-2 py-1 rounded-full transition-transform duration-300 group-hover:scale-105">
                                 9:00 AM - 1:00 PM
                             </span>
-                        </div>
+                        </div> --}}
                         <div class="flex justify-between items-center group">
-                            <span class="text-dark-text">Sunday</span>
+                            <span class="text-dark-text">Saturday - Sunday</span>
                             <span
                                 class="text-dark-text/50 bg-gray-100 px-2 py-1 rounded-full transition-transform duration-300 group-hover:scale-105">
                                 Closed
