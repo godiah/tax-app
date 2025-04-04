@@ -1,0 +1,51 @@
+# Ignore node_modules directory (since it gets installed inside the container)
+node_modules
+npm-debug.log
+yarn.lock
+
+# Ignore vendor directory (composer packages get installed inside the container)
+vendor/
+
+# Ignore environment files
+.env
+
+# Ignore build and temporary files
+storage/*.key
+storage/logs/*
+storage/framework/sessions/*
+storage/framework/views/*
+storage/framework/cache/*
+public/storage
+public/hot
+public/js/*.map
+public/css/*.map
+public/mix-manifest.json
+
+# Ignore cache files
+*.phpunit.result.cache
+.phpunit.result.cache
+.php_cs.cache
+
+# Ignore system and IDE configuration files
+.idea
+*.iml
+*.sublime-project
+*.sublime-workspace
+.vscode
+*.DS_Store
+*.log
+*.swp
+*.bak
+*.tmp
+
+# Ignore Git-related files
+.git
+.gitignore
+.gitmodules
+.gitattributes
+
+# Ignore Docker-related files (if you're generating them dynamically)
+docker-compose.yml
+Dockerfile*
+supervisord.log
+supervisord.pid
