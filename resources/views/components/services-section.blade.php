@@ -19,7 +19,7 @@
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/planning-2.jpg') }}" alt="Tax Strategy and Planning"
+                    <img src="{{ asset('images/services/planning-2.avif') }}" alt="Tax Strategy and Planning"
                         class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
@@ -53,7 +53,7 @@
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/compliance-2.jpg') }}" alt="Corporate Tax Strategy and Planning"
+                    <img src="{{ asset('images/services/compliance-2.avif') }}" alt="Corporate Tax Strategy and Planning"
                         class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>
