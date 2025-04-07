@@ -120,6 +120,7 @@
             <!-- Inquiry Form -->
             <div data-aos="fade-left" data-aos-duration="1000">
                 <form
+                    id="contactForm"
                     class="bg-white border border-gray-100 rounded-2xl p-8 shadow-lg space-y-6 transform transition-all duration-300 hover:shadow-2xl">
                     <div>
                         <label for="name" class="block font-medium font-heading text-primary mb-2">
@@ -158,11 +159,78 @@
                     </div>
 
                     <button type="submit"
-                        class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-lg hover:from-primary/90 hover:to-secondary/90 transition-colors duration-300 transform hover:scale-[1.02]">
-                        Submit Inquiry
-                    </button>
+                    id="submitBtn"
+                    class="w-full bg-gradient-to-r from-primary to-secondary text-white py-3 rounded-lg hover:from-primary/90 hover:to-secondary/90 transition-colors duration-300 transform hover:scale-[1.02] flex justify-center items-center space-x-2">
+                    <span id="submitBtnText">Submit Inquiry</span>
+                    <svg id="spinner" class="hidden animate-spin h-5 w-5 text-white ml-2" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4z"></path>
+                    </svg>
+                </button>
                 </form>
             </div>
         </div>
     </div>
 </section>
+
+<script>
+    document.getElementById('contactForm').addEventListener('submit', async function (event) {
+        event.preventDefault(); // Prevent default form submission
+
+        const submitBtn = document.getElementById("submitBtn");
+        const spinner = document.getElementById("spinner");
+        const submitBtnText = document.getElementById("submitBtnText");
+
+        // Collect form data
+        const email = document.getElementById('email').value;
+        const name = document.getElementById('name').value;
+        const phone = document.getElementById('phone').value;
+        const message = document.getElementById('message').value;
+
+        // Validate payload (optional)
+        if (!email || !message) {
+            alert('Please fill in all necessary.');
+            return;
+        }
+
+        // Prepare payload
+        const payload = {
+            email: email,
+            name: name,
+            phone:phone,
+            message: message,
+        };
+
+        spinner.classList.remove("hidden");
+        submitBtnText.textContent = "Submitting...";
+        submitBtn.disabled = true;
+
+        try {
+            // Send data via fetch API
+            const response = await fetch("send-enquiry", {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'X-CSRF-TOKEN': "{{ csrf_token() }}"
+                },
+                body: JSON.stringify(payload)
+            });
+
+            if (response.ok) {
+                const result = await response.json();
+                alert('Message sent successfully!');
+            } else {
+                alert('Failed to send message. Please try again.');
+                console.error(await response.text());
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        } finally {
+            alert('Message sent successfully!');
+            document.getElementById('contactForm').reset();
+            spinner.classList.add("hidden");
+            submitBtnText.textContent = "Submit Inquiry";
+            submitBtn.disabled = false;
+        }
+    });
+</script>
