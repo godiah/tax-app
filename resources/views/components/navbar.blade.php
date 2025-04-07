@@ -8,7 +8,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="/" class="flex items-center">
-                        <img class="h-18 w-auto" src="{{ asset('images/logo.jpg') }}" alt="Logo">
+                        <img class="h-16 w-auto" src="{{ asset('images/logo.jpg') }}" alt="Logo">
                     </a>
                 </div>
 
@@ -43,7 +43,7 @@
 
                 <!-- Mobile menu button -->
                 <div class="md:hidden">
-                    <button type="button"
+                    <button type="button" aria-label="Toggle navigation"
                         class="inline-flex items-center justify-center p-2 rounded-md text-dark hover:text-primary hover:bg-light transition-colors duration-200 focus:outline-none"
                         onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
                         <svg class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
