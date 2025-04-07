@@ -24,7 +24,7 @@
             </h1>
 
             <p class="text-lg font-body max-w-xl mx-auto text-gray-100 leading-relaxed text-center" data-aos="fade-up"
-                data-aos-duration="1000" data-aos-delay="600">
+                data-aos-duration="400" data-aos-delay="0">
                 We offer comprehensive tax strategies tailored to your unique financial landscape. We transform tax
                 challenges into opportunities for growth and savings.
             </p>

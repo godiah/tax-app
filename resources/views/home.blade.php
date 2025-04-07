@@ -6,7 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Taxgen Consultants LLP</title>
-    <meta name="description" content="We offer comprehensive tax strategies tailored to your unique financial landscape. We transform tax challenges into opportunities for growth and savings.">
+    <meta name="description"
+        content="We offer comprehensive tax strategies tailored to your unique financial landscape. We transform tax challenges into opportunities for growth and savings.">
 
 
     <!-- Styles / Scripts -->

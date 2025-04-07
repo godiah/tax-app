@@ -1,5 +1,5 @@
 <section id="services" class="py-16 lg:py-24 bg-white">
-    <div class="container mx-auto px-4 max-w-7xl">
+    <div class="container mx-auto px-4 md:px-8 max-w-7xl">
         <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="800">
             <span
                 class="inline-block bg-primary/10 text-accent px-3 py-1 rounded-full text-sm font-medium font-secondary mb-3">
@@ -53,7 +53,8 @@
             <div data-aos="fade-up" data-aos-delay="100"
                 class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
                 <div class="relative overflow-hidden">
-                    <img src="{{ asset('images/services/compliance-2.avif') }}" alt="Corporate Tax Strategy and Planning"
+                    <img src="{{ asset('images/services/compliance-2.avif') }}"
+                        alt="Corporate Tax Strategy and Planning"
                         class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
                     <div class="absolute inset-0 bg-primary opacity-40 mix-blend-multiply"></div>
                 </div>

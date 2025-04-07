@@ -1,5 +1,5 @@
 <section id="contact" class="py-16 lg:py-24 bg-light-gray">
-    <div class="container mx-auto px-4 max-w-7xl">
+    <div class="container mx-auto px-4 md:px-8 max-w-7xl">
         <div class="text-center mb-12" data-aos="fade-up" data-aos-duration="800">
             <span
                 class="inline-block bg-primary/10 text-accent px-3 py-1 rounded-full text-sm font-medium font-secondary mb-3 animate-pulse">
