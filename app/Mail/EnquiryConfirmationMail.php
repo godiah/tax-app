@@ -9,7 +9,7 @@ use Illuminate\Mail\Mailables\Content;
 use Illuminate\Mail\Mailables\Envelope;
 use Illuminate\Queue\SerializesModels;
 
-class EnquiryConfirmationMail extends Mailable
+class EnquiryConfirmationMail extends Mailable implements ShouldQueue
 {
     use Queueable, SerializesModels;
 
@@ -27,7 +27,7 @@ class EnquiryConfirmationMail extends Mailable
     public function envelope(): Envelope
     {
         return new Envelope(
-            subject: 'Enquiry Confirmation Mail',
+            subject: 'Enquiry Submission',
         );
     }
 
@@ -37,7 +37,7 @@ class EnquiryConfirmationMail extends Mailable
     public function content(): Content
     {
         return new Content(
-            view: 'view.name',
+            view: 'Mails.contact-confirm',
         );
     }
 
