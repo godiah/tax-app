@@ -36,7 +36,7 @@ class ContactController extends Controller
             // Send email to business owner
             Mail::to($details['email'])->queue(new EnquiryConfirmationMail($details));
 
-            Mail::to('taxgen.ke@gmail.com')->queue(new ContactMail($details));
+            Mail::to('info@taxgenconsulting.com')->queue(new ContactMail($details));
 
             if (Mail::failures()) {
                 Log::error('Mail sending failed: ' . implode(', ', Mail::failures()));

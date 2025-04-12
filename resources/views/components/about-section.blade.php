@@ -34,7 +34,7 @@
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
                         </a>
-                        <a href="mailto:taxgen.ke@gmail.com" aria-label="Send email to Taxgen"
+                        <a href="mailto:info@taxgenconsulting.com" aria-label="Send email to Taxgen"
                             class="text-secondary hover:text-primary transition-colors duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -182,7 +182,7 @@
                                 <circle cx="4" cy="4" r="2"></circle>
                             </svg>
                         </a>
-                        <a href="mailto:taxgen.ke@gmail.com"
+                        <a href="mailto:info@taxgenconsulting.com"
                             class="text-secondary hover:text-primary transition-colors duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
                                 fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
@@ -222,10 +222,10 @@
                         <h3 class="text-xl font-heading font-semibold text-primary">Professional Background</h3>
                     </div>
                     <p class="text-dark-text font-body text-justify">
-                        As a detail oriented tax professional, I have over 10 years experience of hands-on in-depth tax analysis. 
-                        The knowledge gained has enabled provision of bespoke tax advice to clients in any tax related issues 
+                        As a detail oriented tax professional, I have over 10 years experience of hands-on in-depth tax analysis.
+                        The knowledge gained has enabled provision of bespoke tax advice to clients in any tax related issues
                         and helping them to leverage on the tax laws. I am accomplished in development of important
-                        strategies for improving financial performance, improving internal controls, and reducing tax liabilities 
+                        strategies for improving financial performance, improving internal controls, and reducing tax liabilities
                         for individuals, partnerships and corporations.
                     </p>
                 </div>
