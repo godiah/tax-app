@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', 'Dashboard - Taxgen Consultants LLC')
+@section('title', 'Dashboard - Taxgen Consultants LLP')
 
 @section('content')
     <div class="bg-white shadow-lg rounded-xl mx-auto  overflow-hidden">
@@ -9,24 +9,7 @@
             <div class="flex items-center justify-between">
                 <div>
                     <h2 class="text-white font-heading text-2xl font-bold">Dashboard</h2>
-                    <p class="text-white opacity-80 font-body mt-1">TaxGen Consultants Admin Portal</p>
-                </div>
-                <div class="flex items-center space-x-4">
-                    <button class="bg-white bg-opacity-20 hover:bg-opacity-30 transition-all rounded-full p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path
-                                d="M10 2a6 6 0 00-6 6v3.586l-.707.707A1 1 0 004 14h12a1 1 0 00.707-1.707L16 11.586V8a6 6 0 00-6-6zM10 18a3 3 0 01-3-3h6a3 3 0 01-3 3z" />
-                        </svg>
-                    </button>
-                    <button class="bg-white bg-opacity-20 hover:bg-opacity-30 transition-all rounded-full p-2">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" viewBox="0 0 20 20"
-                            fill="currentColor">
-                            <path fill-rule="evenodd"
-                                d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-3a1 1 0 00-.867.5 1 1 0 11-1.731-1A3 3 0 0113 8a3.001 3.001 0 01-2 2.83V11a1 1 0 11-2 0v-1a1 1 0 011-1 1 1 0 100-2zm0 8a1 1 0 100-2 1 1 0 000 2z"
-                                clip-rule="evenodd" />
-                        </svg>
-                    </button>
+                    <p class="text-white opacity-80 font-body mt-1">Taxgen Consultants Admin Portal</p>
                 </div>
             </div>
         </div>
@@ -35,21 +18,8 @@
             <div class="mb-8">
                 <div class="flex flex-col md:flex-row justify-between items-start md:items-center mb-6">
                     <div>
-                        <h3 class="font-heading text-xl font-semibold text-primary mb-2">Welcome to Your Tax Insights
-                            Dashboard</h3>
+                        <h3 class="font-heading text-xl font-semibold text-primary mb-2">Welcome to Your Dashboard</h3>
                         <p class="text-dark font-body">Manage and monitor your tax consulting content all in one place.</p>
-                    </div>
-                    <div class="mt-4 md:mt-0">
-                        <button
-                            class="btn-primary bg-accent hover:bg-opacity-90 text-white px-4 py-2 rounded-lg font-medium flex items-center">
-                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M10 3a1 1 0 011 1v5h5a1 1 0 110 2h-5v5a1 1 0 11-2 0v-5H4a1 1 0 110-2h5V4a1 1 0 011-1z"
-                                    clip-rule="evenodd" />
-                            </svg>
-                            Create New Post
-                        </button>
                     </div>
                 </div>
 
@@ -59,19 +29,41 @@
                         <div class="flex items-start justify-between">
                             <div>
                                 <p class="text-border font-body text-sm uppercase font-medium">Total Posts</p>
-                                <h4 class="text-2xl font-heading font-bold text-primary mt-1">24</h4>
-                                <p class="text-secondary flex items-center text-sm mt-2">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
-                                        fill="currentColor">
-                                        <path fill-rule="evenodd"
-                                            d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
-                                            clip-rule="evenodd" />
-                                    </svg>
-                                    +8% from last month
+                                <h4 class="text-2xl font-heading font-bold text-primary mt-1">{{ $totalPosts }}</h4>
+                                <p class="text-secondary flex items-center text-sm mt-2 font-body text-sm">
+                                    @if ($changeType === 'increase')
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-green-500"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        Increased from last month
+                                    @elseif ($changeType === 'decrease')
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-red-500"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M12 13a1 1 0 100 2h5a1 1 0 001-1V9a1 1 0 10-2 0v2.586l-4.293-4.293a1 1 0 00-1.414 0L8 9.586 3.707 5.293a1 1 0 00-1.414 1.414l5 5a1 1 0 001.414 0L11 9.414 14.586 13H12z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        Decreased from last month
+                                    @else
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1 text-gray-500"
+                                            viewBox="0 0 20 20" fill="currentColor">
+                                            <path fill-rule="evenodd"
+                                                d="M10 18a8 8 0 100-16 8 8 0 000 16zm0-2a6 6 0 100-12 6 6 0 000 12z"
+                                                clip-rule="evenodd" />
+                                        </svg>
+                                        @if ($changeType === 'no-change')
+                                            No change from last month
+                                        @else
+                                            No data from last month
+                                        @endif
+                                    @endif
                                 </p>
                             </div>
                             <div class="p-3 bg-light rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M19 20H5a2 2 0 01-2-2V6a2 2 0 012-2h10a2 2 0 012 2v1m2 13a2 2 0 01-2-2V7m2 13a2 2 0 002-2V9a2 2 0 00-2-2h-2m-4-3H9M7 16h6M7 8h6v4H7V8z" />
@@ -85,7 +77,7 @@
                             <div>
                                 <p class="text-border font-body text-sm uppercase font-medium">Categories</p>
                                 <h4 class="text-2xl font-heading font-bold text-primary mt-1">{{ $totalCategories }}</h4>
-                                <p class="text-secondary flex items-center text-sm mt-2">
+                                <p class="text-secondary flex items-center text-sm mt-2 font-tertiary">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
@@ -96,7 +88,7 @@
                                 </p>
                             </div>
                             <div class="p-3 bg-light rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
@@ -121,7 +113,7 @@
                                 </p>
                             </div>
                             <div class="p-3 bg-light rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
@@ -148,7 +140,7 @@
                                 </p>
                             </div>
                             <div class="p-3 bg-light rounded-lg">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-primary" fill="none"
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                         d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
@@ -165,7 +157,7 @@
                 <div class="bg-white p-6 rounded-xl border border-default shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between mb-4">
                         <h4 class="font-heading text-lg font-semibold text-primary">Content Management</h4>
-                        <div class="p-2 bg-primary rounded-lg">
+                        <div class="p-2 bg-accent rounded-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -173,9 +165,11 @@
                             </svg>
                         </div>
                     </div>
-                    <p class="text-dark mb-4">Create, edit, and manage your tax insight articles with ease.</p>
-                    <div class="flex flex-col space-y-2">
-                        <a href="#" class="flex items-center text-primary hover:text-accent transition-colors">
+                    <p class="text-dark mb-4 font-body">Create, edit, and manage your tax insight articles
+                        with ease.</p>
+                    <div class="flex flex-col space-y-2 font-body">
+                        <a href="{{ route('posts.create') }}"
+                            class="flex items-center text-primary hover:text-accent transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -183,7 +177,8 @@
                             </svg>
                             Create New Post
                         </a>
-                        <a href="#" class="flex items-center text-primary hover:text-accent transition-colors">
+                        <a href="{{ route('posts.index') }}"
+                            class="flex items-center text-primary hover:text-accent transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -191,7 +186,8 @@
                             </svg>
                             View All Posts
                         </a>
-                        <a href="#" class="flex items-center text-primary hover:text-accent transition-colors">
+                        <a href="{{ route('posts.index', ['status' => 'draft']) }}"
+                            class="flex items-center text-primary hover:text-accent transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -206,7 +202,7 @@
                 <div class="bg-white p-6 rounded-xl border border-default shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between mb-4">
                         <h4 class="font-heading text-lg font-semibold text-primary">Category Management</h4>
-                        <div class="p-2 bg-primary rounded-lg">
+                        <div class="p-2 bg-accent rounded-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -214,8 +210,9 @@
                             </svg>
                         </div>
                     </div>
-                    <p class="text-dark mb-4">Organize your content with clear categories for better navigation.</p>
-                    <div class="flex flex-col space-y-2">
+                    <p class="text-dark mb-4 font-body">Organize your content with clear categories for better navigation.
+                    </p>
+                    <div class="flex flex-col space-y-2 font-body">
                         <a href="#" onclick="openCategoryModal(); return false;"
                             class="flex items-center text-primary hover:text-accent transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
@@ -234,13 +231,14 @@
                             </svg>
                             View All Categories
                         </a>
-                        <a href="#" class="flex items-center text-primary hover:text-accent transition-colors">
+                        <a href="{{ route('tags.index') }}"
+                            class="flex items-center text-primary hover:text-accent transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                     d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
                             </svg>
-                            Manage Relationships
+                            Manage Tags
                         </a>
                     </div>
                 </div>
@@ -249,7 +247,7 @@
                 <div class="bg-white p-6 rounded-xl border border-default shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between mb-4">
                         <h4 class="font-heading text-lg font-semibold text-primary">Analytics Dashboard</h4>
-                        <div class="p-2 bg-primary rounded-lg">
+                        <div class="p-2 bg-accent rounded-lg">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -257,8 +255,8 @@
                             </svg>
                         </div>
                     </div>
-                    <p class="text-dark mb-4">Track engagement metrics and understand your audience better.</p>
-                    <div class="flex flex-col space-y-2">
+                    <p class="text-dark mb-4 font-body">Track engagement metrics and understand your audience better.</p>
+                    <div class="flex flex-col space-y-2 font-body">
                         <a href="#" class="flex items-center text-primary hover:text-accent transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">

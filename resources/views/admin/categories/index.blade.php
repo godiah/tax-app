@@ -3,167 +3,146 @@
 @section('title', 'Manage Categories')
 
 @section('content')
-    <div class="container mx-auto px-4 py-6">
-        <!-- Header Section -->
-        <div class="flex flex-col md:flex-row md:items-center md:justify-between mb-6">
-            <div>
-                <h1 class="text-2xl font-heading font-bold text-primary">Category Management</h1>
-                <p class="text-dark mt-1">Organize and manage your content categories</p>
-            </div>
-            <div class="mt-4 md:mt-0">
-                <button onclick="openCategoryModal()"
-                    class="inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors font-body">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                    </svg>
-                    Add Category
-                </button>
-            </div>
-        </div>
-
-        <!-- Search & Filter Bar -->
-        <div class="bg-white rounded-lg border border-default p-4 mb-6 shadow-sm">
-            <div class="flex flex-col md:flex-row md:items-center gap-4">
-                <div class="flex-grow">
-                    <div class="relative">
-                        <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
-                            <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
-                                fill="currentColor">
-                                <path fill-rule="evenodd"
-                                    d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
-                                    clip-rule="evenodd" />
+    <x.admin-admin-wrapper>
+        <div class="mx-auto px-4 sm:px-6 lg:px-8">
+            <!-- Header with background accent -->
+            <div class="relative rounded-lg mb-8 overflow-hidden bg-blog-paper-accent">
+                <div class="absolute inset-0 bg-primary opacity-95 rounded-lg"></div>
+                <div class="relative z-10 px-6 py-8 flex flex-col md:flex-row justify-between items-center">
+                    <div>
+                        <h1 class="font-heading text-3xl font-bold text-white mb-2 font-heading">Category Management</h1>
+                        <p class="font-body text-white/80 font-tertiary">Organize and manage your content categories</p>
+                    </div>
+                    <div>
+                        <button onclick="openCategoryModal()"
+                            class="inline-flex items-center px-4 py-2 bg-accent text-white rounded-lg hover:bg-opacity-90 text-sm font-medium rounded-md shadow-lg cursor-pointer transition-colors font-body">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
                             </svg>
-                        </div>
-                        <input type="text" id="search" placeholder="Search categories..."
-                            class="pl-10 pr-4 py-2 w-full border border-default rounded-md shadow-sm focus:ring-accent focus:border-accent font-body text-dark">
+                            Add Category
+                        </button>
                     </div>
                 </div>
-                <div class="flex items-center gap-3">
-                    <select id="sort"
-                        class="border border-default rounded-md shadow-sm focus:ring-accent focus:border-accent font-body text-dark px-3 py-2">
-                        <option value="name_asc">Name (A-Z)</option>
-                        <option value="name_desc">Name (Z-A)</option>
-                        <option value="created_desc">Newest First</option>
-                        <option value="created_asc">Oldest First</option>
-                    </select>
-                    <button type="button"
-                        class="inline-flex items-center px-3 py-2 border border-default rounded-md shadow-sm text-dark hover:bg-light focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-accent">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
-                        </svg>
-                    </button>
+            </div>
+
+            <!-- Search & Filter Bar -->
+            <div class="mb-6">
+                <div class="flex flex-col md:flex-row md:items-center gap-4">
+                    <div class="flex-grow">
+                        <div class="relative">
+                            <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20"
+                                    fill="currentColor">
+                                    <path fill-rule="evenodd"
+                                        d="M8 4a4 4 0 100 8 4 4 0 000-8zM2 8a6 6 0 1110.89 3.476l4.817 4.817a1 1 0 01-1.414 1.414l-4.816-4.816A6 6 0 012 8z"
+                                        clip-rule="evenodd" />
+                                </svg>
+                            </div>
+                            <input type="text" id="search" placeholder="Search categories..."
+                                class="pl-10 pr-4 py-2 w-full border border-default rounded-md shadow-sm text-sm font-body text-dark">
+                        </div>
+                    </div>
+                    <div class="flex items-center">
+                        <select id="sort"
+                            class="border border-default rounded-md shadow-sm text-sm font-body text-dark px-3 py-2">
+                            <option value="name_asc">Name (A-Z)</option>
+                            <option value="name_desc">Name (Z-A)</option>
+                            <option value="created_desc">Newest First</option>
+                            <option value="created_asc">Oldest First</option>
+                        </select>
+                    </div>
                 </div>
             </div>
-        </div>
 
-        <!-- Categories Table -->
-        <div class="bg-white rounded-lg border border-default shadow-sm overflow-hidden">
-            @if ($categories->isEmpty())
-                <div class="p-8 text-center">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-300 mx-auto mb-4" fill="none"
-                        viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                    </svg>
-                    <h3 class="text-lg font-heading font-semibold text-primary mb-2">No Categories Found</h3>
-                    <p class="text-dark">Get started by creating your first category.</p>
-                    <button onclick="openCategoryModal()"
-                        class="mt-4 inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors font-body">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
-                            stroke="currentColor">
+            <!-- Categories Table -->
+            <div class="">
+                @if ($categories->isEmpty())
+                    <div class="p-8 text-center font-body">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-16 w-16 text-gray-300 mx-auto mb-4" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                         </svg>
-                        Add Category
-                    </button>
-                </div>
-            @else
-                <div class="overflow-x-auto">
-                    <table class="min-w-full divide-y divide-gray-200">
-                        <thead class="bg-light">
-                            <tr>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">Name
-                                </th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">
-                                    Description</th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">
-                                    Content Count</th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-left text-xs font-medium text-dark uppercase tracking-wider">
-                                    Created</th>
-                                <th scope="col"
-                                    class="px-6 py-3 text-right text-xs font-medium text-dark uppercase tracking-wider">
-                                    Actions</th>
-                            </tr>
-                        </thead>
-                        <tbody class="bg-white divide-y divide-gray-200">
-                            @foreach ($categories as $category)
-                                <tr class="hover:bg-light">
-                                    <td class="px-6 py-4 whitespace-nowrap">
-                                        <div class="font-medium text-primary">{{ $category->name }}</div>
-                                    </td>
-                                    <td class="px-6 py-4">
-                                        <div class="text-sm text-gray-900 line-clamp-2">
-                                            {{ $category->description ?: 'No description' }}
-                                        </div>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap">
+                        <h3 class="text-lg font-heading font-semibold text-primary mb-2">No Categories Found</h3>
+                        <p class="text-dark">Get started by creating your first category.</p>
+                        <button onclick="openCategoryModal()"
+                            class="mt-4 inline-flex items-center px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary-hover transition-colors font-tertiary">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                            </svg>
+                            Add Category
+                        </button>
+                    </div>
+                @else
+                    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                        @foreach ($categories as $category)
+                            <div
+                                class="bg-white rounded-lg shadow-md hover:shadow-lg transition-shadow duration-300 overflow-hidden border border-gray-100">
+                                <div class="bg-blog-paper-accent px-5 py-4 border-b border-default">
+                                    <div class="flex justify-between items-start">
+                                        <h3 class="text-lg font-heading text-primary font-medium truncate">
+                                            {{ $category->name }}</h3>
                                         <span
-                                            class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full bg-blue-100 text-blue-800">
-                                            {{ $category->posts_count ?? 0 }}
+                                            class="px-2 py-1 bg-blue-100 text-blue-800 text-xs font-semibold font-tertiary rounded-full">
+                                            {{ $category->posts_count ?? 0 }} posts
                                         </span>
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
-                                        {{ $category->created_at->format('M d, Y') }}
-                                    </td>
-                                    <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
-                                        <div class="flex justify-end space-x-2">
-                                            <button onclick="editCategory({{ $category->id }})"
-                                                class="text-primary hover:text-accent">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                                </svg>
-                                            </button>
-                                            <button type="button" class="text-red-500 hover:text-red-700"
-                                                onclick="showDeleteModal('{{ $category->id }}')">
-                                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
-                                                    viewBox="0 0 24 24" stroke="currentColor">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    </td>
-                                </tr>
-                            @endforeach
-                        </tbody>
-                    </table>
-                </div>
+                                    </div>
+                                </div>
 
-                <!-- Pagination -->
-                <div class="px-6 py-4 border-t border-gray-200">
-                    @if (method_exists($categories, 'links'))
-                        {{ $categories->links() }}
-                    @else
-                        <div class="flex justify-between items-center">
-                            <div class="text-sm text-gray-700">
-                                Showing <span class="font-medium">{{ count($categories) }}</span> categories
+                                <div class="px-5 py-4">
+                                    <div class="text-sm text-dark font-body h-16 overflow-y-auto pr-1 custom-scrollbar">
+                                        {{ $category->description ?: 'No description' }}
+                                    </div>
+                                </div>
+
+                                <div class="bg-light px-5 py-3 flex justify-between items-center">
+                                    <span class="text-xs text-gray-500 font-tertiary">
+                                        Created {{ $category->created_at->format('M d, Y') }}
+                                    </span>
+
+                                    <div class="flex space-x-3">
+                                        <button onclick="editCategory({{ $category->id }})"
+                                            class="text-primary hover:text-accent transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                            </svg>
+                                        </button>
+                                        <button type="button" class="text-red-500 hover:text-red-700 transition-colors"
+                                            onclick="showDeleteModal('{{ $category->id }}')">
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
+                                                viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16" />
+                                            </svg>
+                                        </button>
+                                    </div>
+                                </div>
                             </div>
-                        </div>
-                    @endif
-                </div>
-            @endif
+                        @endforeach
+                    </div>
+
+                    <!-- Pagination -->
+                    <div class="px-4 pt-6">
+                        @if (method_exists($categories, 'links'))
+                            {{ $categories->links() }}
+                        @else
+                            <div class="bg-light rounded-lg p-4">
+                                <div class="text-sm text-gray-700">
+                                    Showing <span class="font-medium">{{ count($categories) }}</span> categories
+                                </div>
+                            </div>
+                        @endif
+                    </div>
+                @endif
+            </div>
         </div>
-    </div>
+    </x.admin-admin-wrapper>
 
     {{-- Include the Create Category Modal --}}
     @include('admin.partials.category-modal')
@@ -229,7 +208,7 @@
                                 <div class="relative mt-1">
                                     <input type="text" name="slug" id="edit_slug"
                                         class="w-full px-3 py-2 border border-default rounded-md shadow-sm focus:ring-accent focus:border-accent font-body"
-                                        placeholder="category-slug">
+                                        placeholder="category-slug" disabled>
                                     <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                         <button type="button" id="editGenerateSlug"
                                             class="text-xs text-accent hover:text-primary">
@@ -292,7 +271,8 @@
                             </h3>
                             <div class="mt-2">
                                 <p class="text-sm text-dark">
-                                    Are you sure you want to delete this category? This action cannot be undone.
+                                    Are you sure you want to delete this category? This action cannot be undone and all
+                                    <span class="text-accent">related posts</span> will be deleted too.
                                 </p>
                             </div>
                         </div>

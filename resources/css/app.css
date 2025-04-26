@@ -12,7 +12,7 @@
 
 @theme {
     /* Fonts */
-    --font-body: "Roboto", ui-sans-serif, system-ui, sans-serif;
+    --font-body: "Inter", ui-sans-serif, system-ui, sans-serif;
     --font-heading: "Poppins", sans-serif;
     --font-tertiary: "Plus Jakarta Sans", sans-serif;
 
@@ -79,7 +79,10 @@
         border-color: var(--color-border);
     }
 }
-
+.tag-option.selected {
+    background-color: var(--color-primary);
+    color: white;
+}
 html,
 body {
     margin: 0;
@@ -126,4 +129,290 @@ html {
 .nav-link.active::after {
     width: 100%;
     background-color: var(--color-primary);
+}
+
+/* Custom scrollbar styling */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: var(--color-border);
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: var(--color-primary);
+}
+
+/* Status label colors */
+.status-published {
+    background-color: rgba(46, 125, 50, 0.15);
+    color: var(--color-secondary);
+}
+
+.status-draft {
+    background-color: rgba(245, 158, 11, 0.15);
+    color: #92400e;
+}
+
+.status-archived {
+    background-color: rgba(107, 114, 128, 0.15);
+    color: #4b5563;
+}
+
+/* Card hover effect */
+.card-hover {
+    transition: all 0.3s ease;
+}
+
+.card-hover:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px -5px rgba(31, 59, 115, 0.1),
+        0 10px 10px -5px rgba(31, 59, 115, 0.04);
+}
+
+/* Content styling */
+.prose {
+    max-width: none;
+}
+
+.prose h1,
+.prose h2,
+.prose h3,
+.prose h4 {
+    color: var(--color-primary);
+    font-family: var(--font-heading);
+    padding: 0.2em;
+}
+
+.prose h1 {
+    font-size: 2em;
+}
+
+.prose h2 {
+    font-size: 1.5em;
+}
+
+.prose h3 {
+    font-size: 1.25em;
+}
+
+.prose p {
+    margin-bottom: 1em;
+    line-height: 1.7;
+    font-family: var(--font-body);
+}
+
+.prose a {
+    color: var(--color-accent);
+    text-decoration: none;
+}
+
+.prose a:hover {
+    text-decoration: underline;
+}
+
+.prose blockquote {
+    border-left: 4px solid var(--color-primary);
+    padding-left: 1em;
+    color: #555;
+    font-style: italic;
+}
+
+.prose code {
+    background-color: #f0f0f0;
+    padding: 0.2em 0.4em;
+    border-radius: 3px;
+    font-size: 0.9em;
+}
+
+.prose pre {
+    background-color: #f0f0f0;
+    padding: 1em;
+    border-radius: 5px;
+    overflow-x: auto;
+}
+
+/* Enhanced list styling */
+.prose ul,
+.CodeMirror-line ul {
+    list-style-type: disc;
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.prose ol,
+.CodeMirror-line ol {
+    list-style-type: decimal;
+    padding-left: 1.5em;
+    margin-bottom: 1em;
+}
+
+.prose ul ul,
+.CodeMirror-line ul ul {
+    list-style-type: circle;
+    margin-bottom: 0;
+}
+
+.prose ol ol,
+.CodeMirror-line ol ol {
+    list-style-type: lower-alpha;
+    margin-bottom: 0;
+}
+
+.prose li,
+.CodeMirror-line li {
+    margin-bottom: 0.5em;
+    display: list-item;
+}
+
+/* Make sure bullets/numbers actually show up */
+.prose li::marker,
+.CodeMirror-line li::marker {
+    color: var(--color-primary);
+    font-weight: bold;
+}
+
+.prose img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+    margin: 1em 0;
+}
+
+.prose table {
+    border-collapse: collapse;
+    width: 100%;
+    margin: 1em 0;
+}
+
+.prose th,
+.prose td {
+    border: 1px solid #ddd;
+    padding: 0.5em;
+}
+
+.prose th {
+    background-color: #f0f0f0;
+}
+
+/* SimpleMDE specific styles */
+.editor-preview ul,
+.editor-preview-side ul {
+    list-style-type: disc !important;
+    padding-left: 2em !important;
+}
+
+.editor-preview ol,
+.editor-preview-side ol {
+    list-style-type: decimal !important;
+    padding-left: 2em !important;
+}
+
+.editor-preview li,
+.editor-preview-side li {
+    display: list-item !important;
+    margin-bottom: 0.5em !important;
+}
+
+/*  CodeMirror editor content */
+.CodeMirror .cm-list-1:before {
+    content: "• ";
+    color: var(--color-primary);
+}
+
+.CodeMirror .cm-list-2:before {
+    content: "◦ ";
+    color: var(--color-primary);
+}
+
+.CodeMirror .cm-list-3:before {
+    content: "■ ";
+    color: var(--color-primary);
+}
+
+.CodeMirror .cm-formatting-list-ol {
+    font-weight: bold;
+    color: var(--color-primary);
+}
+
+/* Gradient overlay for content preview */
+.content-preview {
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.content-preview.collapsed {
+    max-height: 400px;
+    position: relative;
+}
+
+.content-preview.collapsed::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 80px;
+    background: linear-gradient(
+        to bottom,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 1) 100%
+    );
+    pointer-events: none;
+}
+
+/* Custom button styles */
+.btn-primary {
+    background-color: var(--color-primary);
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary-hover);
+    transform: translateY(-1px);
+}
+
+.btn-accent {
+    background-color: var(--color-accent);
+    color: white;
+    transition: all 0.2s ease;
+}
+
+.btn-accent:hover {
+    background-color: #c84718;
+    transform: translateY(-1px);
+}
+
+.btn-secondary {
+    background-color: #f0f0f0;
+    color: var(--color-dark-text);
+    transition: all 0.2s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #e0e0e0;
+    transform: translateY(-1px);
+}
+
+/* Tab styling */
+.tab-active {
+    color: var(--color-accent);
+    border-bottom: 3px solid var(--color-accent);
+}
+
+.tab {
+    border-bottom: 3px solid transparent;
+}
+
+.tab:hover:not(.tab-active) {
+    color: var(--color-primary);
+    border-bottom: 3px solid #d1d5db;
 }

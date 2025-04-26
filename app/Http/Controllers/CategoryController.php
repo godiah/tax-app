@@ -13,12 +13,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::all();
-        // If you're using relationships, adjust this to match your model setup
-        // $categories = Category::withCount('posts')->latest()->get();
-
-        // $categories = Category::withCount('posts')->latest()->paginate(10);
-
+        $categories = Category::withCount('posts')->latest()->paginate(12);
         return view('admin.categories.index', compact('categories'));
     }
 
@@ -101,6 +96,7 @@ class CategoryController extends Controller
      */
     public function destroy(Category $category)
     {
+        // check also on deleting the post images
         $category->delete();
 
         return redirect()->route('categories.index')

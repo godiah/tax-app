@@ -4,8 +4,11 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PostController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\TagController;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -38,4 +41,14 @@ Route::middleware('auth')->group(function () {
         return view('admin.categories.create-modal');
     })->name('admin.categories.create-modal');
     Route::get('/check-title', [CategoryController::class, 'checkTitle'])->name('check-title');
+
+    // Tag Routes
+    Route::resource('tags', TagController::class)->except(['show']);
+    Route::get('/admin/modal/create-tag', function () {
+        return view('admin.tags.create-modal');
+    })->name('admin.tags.create-modal');
+
+    // Post Routes
+    Route::resource('posts', PostController::class);
+    Route::patch('/posts/{post}/publish', [PostController::class, 'publish'])->name('posts.publish');
 });

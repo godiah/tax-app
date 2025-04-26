@@ -48,7 +48,7 @@
                             <div class="relative mt-1">
                                 <input type="text" name="slug" id="slug"
                                     class="w-full px-3 py-2 border border-default rounded-md shadow-sm focus:ring-accent focus:border-accent font-body"
-                                    placeholder="category-slug">
+                                    placeholder="category-slug" disabled>
                                 <div class="absolute inset-y-0 right-0 flex items-center pr-3">
                                     <button type="button" id="generateSlug"
                                         class="text-xs text-accent hover:text-primary">
