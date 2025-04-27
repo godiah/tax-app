@@ -15,152 +15,129 @@
             </p>
         </div>
 
-        <!-- Featured Article -->
-        <div class="bg-white rounded-xl shadow-lg overflow-hidden mb-12" data-aos="fade-up" data-aos-delay="100">
-            <div class="flex flex-col lg:flex-row">
-                <div class="lg:w-1/2">
-                    <div class="h-full w-full bg-gradient-to-r from-primary to-secondary"></div>
-                </div>
-                <div class="lg:w-1/2 p-6 lg:p-10 flex flex-col justify-between">
-                    <div>
-                        <span class="font-secondary text-sm text-accent font-medium mb-2 block">Featured Article</span>
-                        <h3 class="text-2xl font-bold font-heading text-primary mb-4">Understanding the Latest Tax
-                            Reform: What It Means for Businesses</h3>
-                        <p class="text-dark font-body mb-6 text-justify">Our tax experts break down the latest tax
-                            reform changes and
-                            provide actionable insights on how these changes will impact your business operations,
-                            deductions, and overall tax strategy.</p>
+        <!-- Blog Filter + Search  -->
+        <div x-data="postsData(@js($posts->items()), { current_page: {{ $posts->currentPage() }}, last_page: {{ $posts->lastPage() }} }, @js($categories))" x-init="" class="space-y-8">
+            {{-- FILTER BAR --}}
+            <div class="relative mb-10" x-data="{ searchOpen: false }">
+                {{-- reuse your “All + 3 + More” markup, but call filter(cat.id) --}}
+                <div :class="searchOpen ? 'mr-64' : ''"
+                    class="flex flex-wrap justify-center items-center gap-3 transition-all duration-300">
+                    <button @click="filter('all')"
+                        :class="activeCategory === 'all' ? 'bg-primary text-white' :
+                            'border border-default text-dark hover:bg-primary hover:text-white'"
+                        class="px-5 py-2 rounded-full font-secondary text-sm transition">All Posts</button>
+
+                    <template x-for="(cat, idx) in categories.slice(0,3)" :key="cat.id">
+                        <button @click="filter(cat.id)" x-text="cat.name"
+                            :class="activeCategory === cat.id ? 'bg-primary text-white' :
+                                'border border-default text-dark hover:bg-primary hover:text-white'"
+                            class="px-5 py-2 rounded-full font-secondary text-sm transition"></button>
+                    </template>
+
+                    <div x-show="categories.length>3" class="relative" x-cloak>
+                        <button @click="moreOpen = !moreOpen"
+                            class="px-5 py-2 rounded-full border font-secondary text-sm flex items-center transition">
+                            More
+                            <svg class="h-4 w-4 ml-1 transition-transform" :class="{ 'rotate-180': moreOpen }">
+                                <path d="M19 9l-7 7-7-7" stroke="currentColor" stroke-width="2" fill="none"
+                                    stroke-linecap="round" />
+                            </svg>
+                        </button>
+                        <div x-show="moreOpen" @click.away="moreOpen=false" x-transition
+                            class="absolute left-0 mt-2 w-48 bg-white rounded-md shadow-lg ring-1 ring-black ring-opacity-5 z-10"
+                            x-cloak>
+                            <template x-for="cat in categories.slice(3)" :key="cat.id">
+                                <button @click="filter(cat.id); moreOpen=false" x-text="cat.name"
+                                    :class="activeCategory === cat.id ? 'bg-light' : ''"
+                                    class="block w-full text-left px-4 py-2 font-secondary text-sm hover:bg-light"></button>
+                            </template>
+                        </div>
                     </div>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-primary mr-3">
-                                <img src="{{ asset('images/profile.jpg') }}" alt="Michael Thompson"
-                                    class="w-10 h-10 rounded-full object-cover border-3 border-white shadow-md" />
+
+                    {{-- your search toggle on the right --}}
+                    <div class="absolute top-0 right-0 flex items-center">
+                        <div x-show="searchOpen" x-transition…>…</div>
+                        <button @click="searchOpen=!searchOpen; $nextTick(()=>searchOpen&&$refs.searchInput.focus())"
+                            …>🔍</button>
+                    </div>
+                </div>
+            </div>
+
+
+
+            <!-- Articles Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <template x-for="post in posts" :key="post.id">
+                    <div class="bg-white rounded-xl shadow-lg flex flex-col h-full">
+                        <div class="relative h-48 overflow-hidden">
+                            <img x-show="post.featured_image" :src="post.featured_image_url"
+                                class="w-full h-full object-cover">
+                            <div x-show="!post.featured_image"
+                                class="h-full w-full bg-gradient-to-r from-primary to-secondary"></div>
+                        </div>
+                        <div class="p-6 flex flex-col flex-grow">
+                            <div class="flex-grow">
+                                <span class="font-secondary text-sm text-accent font-medium mb-2 block"
+                                    x-text="post.category.name"></span>
+                                <h3 class="font-heading text-xl text-primary mb-1 h-14 overflow-hidden">
+                                    <a :href="`/blog/${post.slug}`" class="hover:text-accent line-clamp-2"
+                                        x-text="post.title"></a>
+                                </h3>
+                                <p class="font-body text-dark mb-2 text-justify h-24 overflow-hidden"
+                                    x-text="post.excerpt"></p>
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="font-body text-sm text-border"
+                                        x-text="post.read_time + ' min read'"></span>
+                                    <span class="font-body text-sm text-border" x-text="post.published_date"></span>
+                                </div>
                             </div>
-                            <div>
-                                <span class="font-medium text-dark">Rajat Sharma, CPA</span>
-                                <div class="text-sm text-border mt-1">March 20, 2024</div>
+                            <div class="flex items-center justify-between mt-auto pt-4 border-t border-gray-100">
+                                <div class="flex items-center">
+                                    <img :src="post.author.photo_url"
+                                        class="w-10 h-10 rounded-full mr-3 object-cover border-3 border-white shadow-md">
+                                    <span class="font-heading text-sm text-dark" x-text="post.author.name"></span>
+                                </div>
+                                <a :href="`/blog/${post.slug}`"
+                                    class="text-sm text-accent hover:underline font-body">Read More →</a>
                             </div>
                         </div>
-                        <a href="#" class="text-accent hover:underline font-semibold font-secondary">Read More
-                            →</a>
+                    </div>
+                </template>
+            </div>
+
+            {{-- Pagination links --}}
+            <div class="mt-8 flex justify-center space-x-2">
+                <button @click="go(meta.current_page - 1)" :disabled="meta.current_page === 1"
+                    class="px-3 py-1 border rounded">&lt;</button>
+
+                <template x-for="p in Array(meta.last_page).fill().map((_,i)=>i+1)" :key="p">
+                    <button @click="go(p)" :class="p === meta.current_page ? 'bg-primary text-white' : 'border'
+                    }"
+                        class="px-3 py-1 rounded" x-text="p"></button>
+                </template>
+
+                <button @click="go(meta.current_page + 1)" :disabled="meta.current_page === meta.last_page"
+                    class="px-3 py-1 border rounded">&gt;</button>
+            </div>
+
+            <!-- Newsletter Subscription Box -->
+            <div class="mt-12 bg-primary rounded-xl p-8 md:p-10" data-aos="fade-up" data-aos-delay="100">
+                <div class="flex flex-col md:flex-row items-center justify-between">
+                    <div class="md:w-1/2 mb-6 md:mb-0">
+                        <h3 class="text-white text-2xl font-bold font-heading mb-3">Stay Updated on Tax Matters</h3>
+                        <p class="text-white opacity-90 font-secondary">Subscribe to our newsletter and never miss
+                            important tax updates, deadline reminders, and expert advice.</p>
+                    </div>
+                    <div class="md:w-1/2 lg:w-2/5">
+                        <form class="flex flex-col sm:flex-row gap-3">
+                            <input type="email" placeholder="Your email address"
+                                class="flex-grow px-4 py-3 rounded-lg text-white font-semibold focus:outline-none border-2 border-accent "
+                                required>
+                            <button type="submit"
+                                class="bg-accent hover:bg-opacity-90 transition duration-300 text-white font-bold py-3 px-6 rounded-lg font-secondary">Subscribe</button>
+                        </form>
                     </div>
                 </div>
             </div>
         </div>
-
-        <!-- Articles Grid -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Blog Post 1 -->
-            <div class="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105"
-                data-aos="fade-up" data-aos-delay="100">
-                <div class="relative h-48 overflow-hidden">
-                    <div class="w-full h-full bg-gradient-to-r from-accent to-secondary"></div>
-                </div>
-                <div class="p-6">
-                    <span class="font-secondary text-sm text-accent font-medium mb-2 block">Expert Analysis</span>
-                    <h3 class="font-heading text-xl text-primary mb-3">
-                        <a href="#" class="hover:text-accent transition-colors">Important GST Filing Deadlines
-                            for
-                            Q2 2025</a>
-                    </h3>
-                    <p class="font-body text-dark mb-4 text-justify">
-                        Stay compliant with these upcoming GST filing deadlines. Our comprehensive guide includes
-                        all
-                        the necessary dates and documents you need to prepare.
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-primary mr-3">
-                                <img src="{{ asset('images/profile.jpg') }}" alt="Michael Thompson"
-                                    class="w-10 h-10 rounded-full object-cover border-3 border-white shadow-md" />
-                            </div>
-                            <span class="font-body text-sm text-dark">Priya Desai, CA</span>
-                        </div>
-                        <span class="font-body text-sm text-border">Mar 20, 2025</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Blog Post 2 -->
-            <div class="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105"
-                data-aos="fade-up" data-aos-delay="100">
-                <div class="relative h-48 overflow-hidden">
-                    <div class="w-full h-full bg-gradient-to-r from-secondary to-primary"></div>
-                </div>
-                <div class="p-6">
-                    <span class="font-secondary text-sm text-accent font-medium mb-2 block">Financial
-                        Strategy</span>
-                    <h3 class="font-heading text-xl text-primary mb-3">
-                        <a href="#" class="hover:text-accent transition-colors">5 Tax-Saving Strategies for
-                            SMEs
-                            in 2025</a>
-                    </h3>
-                    <p class="font-body text-dark mb-4 text-justify">
-                        Maximize your tax savings with these proven strategies for small and medium enterprises. Our
-                        experts share legitimate methods to reduce your tax burden.
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-primary mr-3">
-                                <img src="{{ asset('images/profile.jpg') }}" alt="Michael Thompson"
-                                    class="w-10 h-10 rounded-full object-cover border-3 border-white shadow-md" />
-                            </div>
-                            <span class="font-body text-sm text-dark">Anil Gupta, CA</span>
-                        </div>
-                        <span class="font-body text-sm text-border">Mar 15, 2025</span>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Blog Post 3 -->
-            <div class="bg-white rounded-xl overflow-hidden shadow-lg transition-transform hover:scale-105"
-                data-aos="fade-up" data-aos-delay="100">
-                <div class="relative h-48 overflow-hidden">
-                    <div class="w-full h-full bg-gradient-to-r from-primary to-accent"></div>
-                </div>
-                <div class="p-6">
-                    <span class="font-secondary text-sm text-accent font-medium mb-2 block">Success Story</span>
-                    <h3 class="font-heading text-xl text-primary mb-3">
-                        <a href="#" class="hover:text-accent transition-colors">How We Helped a Manufacturing
-                            Client Save KES1.2M in Taxes</a>
-                    </h3>
-                    <p class="font-body text-dark mb-4 text-justify">
-                        Learn how our strategic tax planning approach helped a mid-sized manufacturing company
-                        significantly reduce their tax liability while remaining fully compliant.
-                    </p>
-                    <div class="flex items-center justify-between">
-                        <div class="flex items-center">
-                            <div class="w-10 h-10 rounded-full bg-primary mr-3">
-                                <img src="{{ asset('images/profile.jpg') }}" alt="Michael Thompson"
-                                    class="w-10 h-10 rounded-full object-cover border-3 border-white shadow-md" />
-                            </div>
-                            <span class="font-body text-sm text-dark">Vikram Mehta</span>
-                        </div>
-                        <span class="font-body text-sm text-border">Mar 10, 2025</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <!-- Newsletter Subscription Box -->
-        <div class="mt-12 bg-primary rounded-xl p-8 md:p-10" data-aos="fade-up" data-aos-delay="100">
-            <div class="flex flex-col md:flex-row items-center justify-between">
-                <div class="md:w-1/2 mb-6 md:mb-0">
-                    <h3 class="text-white text-2xl font-bold font-heading mb-3">Stay Updated on Tax Matters</h3>
-                    <p class="text-white opacity-90 font-secondary">Subscribe to our newsletter and never miss
-                        important tax updates, deadline reminders, and expert advice.</p>
-                </div>
-                <div class="md:w-1/2 lg:w-2/5">
-                    <form class="flex flex-col sm:flex-row gap-3">
-                        <input type="email" placeholder="Your email address"
-                            class="flex-grow px-4 py-3 rounded-lg text-white font-semibold focus:outline-none border-2 border-accent "
-                            required>
-                        <button type="submit"
-                            class="bg-accent hover:bg-opacity-90 transition duration-300 text-white font-bold py-3 px-6 rounded-lg font-secondary">Subscribe</button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
 </section>

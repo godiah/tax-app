@@ -13,7 +13,7 @@ class TagController extends Controller
      */
     public function index()
     {
-        $tags = Tag::withCount('posts')->orderBy('name')->paginate(8);
+        $tags = Tag::withCount('posts')->orderBy('name')->paginate(20);
 
         // Get most used tag
         $mostUsedTag = Tag::withCount('posts')
