@@ -114,7 +114,7 @@
                                 role="menu" aria-orientation="vertical" aria-labelledby="user-menu-button"
                                 tabindex="-1">
                                 <div class="py-1" role="none">
-                                    <a href=""
+                                    <a href="{{ route('profile') }}"
                                         class="block px-4 py-2 text-sm text-dark hover:bg-gray-100 hover:text-primary"
                                         role="menuitem" tabindex="-1" id="user-menu-item-0">
                                         <div class="flex items-center">

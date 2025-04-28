@@ -11,9 +11,41 @@ class TagController extends Controller
     /**
      * List all tags
      */
-    public function index()
+    public function index(Request $request)
     {
-        $tags = Tag::withCount('posts')->orderBy('name')->paginate(20);
+        $query = Tag::withCount('posts');
+
+        // Search functionality
+        if ($request->filled('search')) {
+            $term = $request->search;
+            $query->where('name', 'like', "%{$term}%");
+        }
+
+        // Sorting functionality
+        $sort = $request->input('sort', 'name_asc');
+        switch ($sort) {
+            case 'name_desc':
+                $query->orderBy('name', 'desc');
+                break;
+            case 'count_desc':
+                $query->orderBy('posts_count', 'desc');
+                break;
+            case 'count_asc':
+                $query->orderBy('posts_count', 'asc');
+                break;
+            case 'created_desc':
+                $query->orderBy('created_at', 'desc');
+                break;
+            case 'created_asc':
+                $query->orderBy('created_at', 'asc');
+                break;
+            case 'name_asc':
+            default:
+                $query->orderBy('name', 'asc');
+                break;
+        }
+
+        $tags = $query->paginate(20)->appends($request->all());
 
         // Get most used tag
         $mostUsedTag = Tag::withCount('posts')
@@ -22,6 +54,10 @@ class TagController extends Controller
 
         // Calculate total tagged content
         $totalTaggedContent = DB::table('post_tag')->count();
+
+        if ($request->ajax()) {
+            return view('admin.tags.partials.tags-list', compact('tags'));
+        }
 
         return view('admin.tags.index', compact('tags', 'mostUsedTag', 'totalTaggedContent'));
     }

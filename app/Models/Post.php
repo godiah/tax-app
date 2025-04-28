@@ -8,10 +8,12 @@ use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
 use League\CommonMark\MarkdownConverter;
 use Illuminate\Support\Facades\Cache;
+use Spatie\Activitylog\LogOptions;
+use Spatie\Activitylog\Traits\LogsActivity;
 
 class Post extends Model
 {
-    use HasFactory;
+    use HasFactory, LogsActivity;
 
     protected $fillable = [
         'title',
@@ -88,5 +90,20 @@ class Post extends Model
 
             return (string) $converter->convert($this->content);
         });
+    }
+
+    /**
+     * Configure the Activity Log for this model.
+     */
+    public function getActivitylogOptions(): LogOptions
+    {
+        return LogOptions::defaults()
+            ->useLogName('post')
+            ->logOnly(['title', 'content', 'status'])
+            ->logOnlyDirty()
+            ->dontSubmitEmptyLogs()
+            ->setDescriptionForEvent(function (string $eventName) {
+                return "{$eventName} post \"{$this->title}\"";
+            });
     }
 }

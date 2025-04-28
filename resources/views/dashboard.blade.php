@@ -11,6 +11,18 @@
                     <h2 class="text-white font-heading text-2xl font-bold">Dashboard</h2>
                     <p class="text-white opacity-80 font-body mt-1">Taxgen Consultants Admin Portal</p>
                 </div>
+
+                <div>
+                    <button onclick="openQuickGuideModal()"
+                        class="inline-flex items-center px-4 py-2 bg-accent text-white rounded-lg hover:bg-opacity-90 text-sm font-medium rounded-md shadow-lg cursor-pointer transition-colors font-body">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253" />
+                        </svg>
+                        Quick Guide
+                    </button>
+                </div>
             </div>
         </div>
 
@@ -101,15 +113,22 @@
                         <div class="flex items-start justify-between">
                             <div>
                                 <p class="text-border font-body text-sm uppercase font-medium">Page Views</p>
-                                <h4 class="text-2xl font-heading font-bold text-primary mt-1">1,248</h4>
-                                <p class="text-secondary flex items-center text-sm mt-2">
+                                <h4 class="text-2xl font-heading font-bold text-primary mt-1">{{ $totalViews }}</h4>
+                                <p class="text-secondary flex items-center text-sm mt-2 font-tertiary">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
-                                            d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
+                                            d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1
+                                                                                                                                                                                                        1 0 01-1.414 0L8 10.414l-4.293
+                                                                                                                                                                                                        4.293a1 1 0 01-1.414-1.414l5-5a1
+                                                                                                                                                                                                        1 0 011.414 0L11 10.586 14.586
+                                                                                                                                                                                                        7H12z"
                                             clip-rule="evenodd" />
-                                    </svg>
-                                    +18% from last week
+                                        @if ($popularCategory)
+                                            <span>{{ $popularCategory->name }}</span>
+                                        @else
+                                            <span>No categories yet</span>
+                                        @endif
                                 </p>
                             </div>
                             <div class="p-3 bg-light rounded-lg">
@@ -127,23 +146,23 @@
                     <div class="bg-white p-5 rounded-xl border border-default shadow-sm hover:shadow-md transition-all">
                         <div class="flex items-start justify-between">
                             <div>
-                                <p class="text-border font-body text-sm uppercase font-medium">Comments</p>
-                                <h4 class="text-2xl font-heading font-bold text-primary mt-1">38</h4>
-                                <p class="text-secondary flex items-center text-sm mt-2">
+                                <p class="text-border font-body text-sm uppercase font-medium">Likes</p>
+                                <h4 class="text-2xl font-heading font-bold text-primary mt-1">{{ $totalLikes }}</h4>
+                                <p class="text-secondary flex items-center text-sm mt-2 font-tertiary">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" viewBox="0 0 20 20"
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
                                             d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1 1 0 01-1.414 0L8 10.414l-4.293 4.293a1 1 0 01-1.414-1.414l5-5a1 1 0 011.414 0L11 10.586 14.586 7H12z"
                                             clip-rule="evenodd" />
                                     </svg>
-                                    +5 new comments
+                                    +{{ $recentLikes }} new likes
                                 </p>
                             </div>
                             <div class="p-3 bg-light rounded-lg">
                                 <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-accent" fill="none"
                                     viewBox="0 0 24 24" stroke="currentColor">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
+                                        d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                                 </svg>
                             </div>
                         </div>
@@ -286,81 +305,120 @@
             </div>
 
             <!-- Recent Activity & Quick Start -->
-            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            <div class="grid grid-cols-1">
                 <!-- Recent Activity -->
-                <div class="lg:col-span-2 bg-white p-6 rounded-xl border border-default shadow-sm">
+                <div class="bg-white p-6 rounded-xl border border-default shadow-sm">
                     <h4 class="font-heading text-lg font-semibold text-primary mb-4">Recent Activity</h4>
-                    <div class="space-y-4">
-                        <div class="flex items-start">
-                            <div class="bg-light p-2 rounded-full mr-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h5 class="font-medium text-dark">New Post Created</h5>
-                                <p class="text-border text-sm">Tax Implications of Remote Work Arrangements</p>
-                                <p class="text-xs text-border mt-1">Today at 10:45 AM</p>
-                            </div>
-                        </div>
+                    <div class="space-y-6 relative">
+                        <!-- Vertical timeline line -->
+                        <div class="absolute left-4 top-0 w-0.5 h-full bg-light"></div>
 
-                        <div class="flex items-start">
-                            <div class="bg-light p-2 rounded-full mr-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h5 class="font-medium text-dark">Post Updated</h5>
-                                <p class="text-border text-sm">2025 Tax Calendar for Small Businesses</p>
-                                <p class="text-xs text-border mt-1">Yesterday at 3:22 PM</p>
-                            </div>
-                        </div>
+                        @foreach ($activities as $act)
+                            <div class="flex items-start relative">
+                                <!-- Icon based on activity type -->
+                                <div class="bg-light p-2 rounded-full mr-4 z-10">
+                                    @if ($act->log_name == 'post')
+                                        @if (str_contains($act->description, 'created'))
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+                                            </svg>
+                                        @else
+                                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary"
+                                                fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                    d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                                            </svg>
+                                        @endif
+                                    @elseif($act->log_name == 'category')
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+                                        </svg>
+                                    @elseif($act->log_name == 'tag')
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14" />
+                                        </svg>
+                                    @elseif(str_contains($act->description, 'logged in'))
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-secondary"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M11 16l-4-4m0 0l4-4m-4 4h14m-5 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h7a3 3 0 013 3v1" />
+                                        </svg>
+                                    @elseif(str_contains($act->description, 'logged out'))
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent"
+                                            fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1" />
+                                        </svg>
+                                    @else
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-dark" fill="none"
+                                            viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                        </svg>
+                                    @endif
+                                </div>
 
-                        <div class="flex items-start">
-                            <div class="bg-light p-2 rounded-full mr-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-primary" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
-                                </svg>
-                            </div>
-                            <div>
-                                <h5 class="font-medium text-dark">New Comment</h5>
-                                <p class="text-border text-sm">On "Understanding Tax Credits vs. Deductions"</p>
-                                <p class="text-xs text-border mt-1">Yesterday at 11:15 AM</p>
-                            </div>
-                        </div>
+                                <!-- Activity content -->
+                                <div class="flex-grow">
+                                    <div class="flex justify-between items-start font-body">
+                                        <div>
+                                            <h5 class="font-medium text-dark">
+                                                @if (str_contains($act->description, 'created'))
+                                                    Added New {{ ucfirst($act->log_name) }}
+                                                @elseif(str_contains($act->description, 'updated'))
+                                                    Updated {{ ucfirst($act->log_name) }}
+                                                @elseif(str_contains($act->description, 'deleted'))
+                                                    Deleted {{ ucfirst($act->log_name) }}
+                                                @else
+                                                    {{ ucfirst(str_replace(['_', '-'], ' ', $act->description)) }}
+                                                @endif
 
-                        <div class="flex items-start">
-                            <div class="bg-light p-2 rounded-full mr-4">
-                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-accent" fill="none"
-                                    viewBox="0 0 24 24" stroke="currentColor">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                        d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
-                                </svg>
+                                                <!-- Item name in quotes and colored -->
+                                                @if (strpos($act->description, '"') !== false)
+                                                    <span
+                                                        class="text-accent">"{{ preg_replace('/.*\"(.*)\".*/', '$1', $act->description) }}"</span>
+                                                @elseif($act->subject)
+                                                    <span class="text-accent">
+                                                        "@if ($act->log_name == 'post')
+                                                            {{ $act->subject->title }}@else{{ $act->subject->name }}
+                                                            @endif"
+                                                    </span>
+                                                @endif
+                                            </h5>
+                                            <p class="text-xs text-border mt-1">{{ $act->created_at->format('M d, Y') }}
+                                                at {{ $act->created_at->format('g:i A') }}
+                                            </p>
+                                        </div>
+
+                                        <!-- Username to the right -->
+                                        @if ($act->causer)
+                                            <div class="text-primary font-tertiary text-xs font-stretch-ultra-expanded">
+                                                {{ $act->causer->name }}
+                                            </div>
+                                        @endif
+                                    </div>
+                                </div>
                             </div>
-                            <div>
-                                <h5 class="font-medium text-dark">New Category Created</h5>
-                                <p class="text-border text-sm">International Taxation</p>
-                                <p class="text-xs text-border mt-1">Apr 23, 2025 at 9:30 AM</p>
-                            </div>
-                        </div>
+                        @endforeach
                     </div>
+
+                    <!-- Pagination with improved styling -->
+                    <div class="mt-6">
+                        {{ $activities->links() }}
+                    </div>
+
+                    <!-- View All Link with hover effect -->
                     <div class="mt-4 text-center">
-                        <a href="#" class="text-accent hover:underline font-medium">View All Activity</a>
-                    </div>
-                </div>
-
-                <!-- Quick Start Guide -->
-                <div class="bg-blog-paper-accent p-6 rounded-xl border border-default shadow-sm">
-                    <div class="flex items-center justify-between mb-4">
-                        <h4 class="font-heading text-lg font-semibold text-accent">Quick Start Guide</h4>
-
+                        <a href="{{ route('activities.index') }}"
+                            class="text-accent hover:text-primary hover:underline font-medium transition-colors duration-200 font-tertiary text-sm">
+                            View All Activity
+                        </a>
                     </div>
                 </div>
             </div>
@@ -368,6 +426,6 @@
     </div>
 
     <!-- Modals -->
-    <!-- Create New Category -->
     @include('admin.partials.category-modal')
+    @include('admin.partials.help-guide-modal')
 @endsection

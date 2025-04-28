@@ -11,11 +11,45 @@ class CategoryController extends Controller
     /**
      * Display a listing of the categories.
      */
-    public function index()
+    public function index(Request $request)
     {
-        $categories = Category::withCount('posts')->latest()->paginate(12);
+        $query = Category::withCount('posts');
+
+        // search
+        if ($request->filled('search')) {
+            $term = $request->search;
+            $query->where(function ($q) use ($term) {
+                $q->where('name', 'like', "%{$term}%")
+                    ->orWhere('description', 'like', "%{$term}%");
+            });
+        }
+
+        // sort - default to name_asc to match the HTML default
+        $sort = $request->input('sort', 'name_asc');
+        switch ($sort) {
+            case 'name_desc':
+                $query->orderBy('name', 'desc');
+                break;
+            case 'created_asc':
+                $query->orderBy('created_at', 'asc');
+                break;
+            case 'created_desc':
+                $query->orderBy('created_at', 'desc');
+                break;
+            case 'name_asc':
+            default:
+                $query->orderBy('name', 'asc');
+                break;
+        }
+
+        $categories = $query->paginate(12)->appends($request->all());
+
+        if ($request->ajax()) {
+            return view('admin.categories.partials.categories-list', compact('categories'));
+        }
         return view('admin.categories.index', compact('categories'));
     }
+
 
     /**
      * Show the form for creating a new category.

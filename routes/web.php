@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -7,6 +8,7 @@ use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\TagController;
@@ -58,4 +60,13 @@ Route::middleware('auth')->group(function () {
     // Post Routes
     Route::resource('posts', PostController::class);
     Route::patch('/posts/{post}/publish', [PostController::class, 'publish'])->name('posts.publish');
+
+    // Activity Routes
+    Route::get('activities', [ActivityController::class, 'index'])->name('activities.index');
+    Route::get('activities/filter', [ActivityController::class, 'filter'])->name('activities.filter');
+
+    // Profile Routes
+    Route::get('profile', [ProfileController::class, 'index'])->name('profile');
+    Route::post('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
+    Route::patch('profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
 });

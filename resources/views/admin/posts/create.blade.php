@@ -22,7 +22,7 @@
                             <p class="text-xl font-bold text-primary font-heading">Add fresh content to your blog</p>
                         </div>
                     </div>
-                    <div class="flex space-x-2 font-body">
+                    <div class="flex space-x-4 font-body">
                         <a href="{{ route('posts.index') }}"
                             class="inline-flex items-center px-4 py-2 btn-secondary rounded-lg shadow-sm text-sm font-medium">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-primary" fill="none"
@@ -32,6 +32,14 @@
                             </svg>
                             Back to Posts
                         </a>
+                        <button onclick="showFormHelpGuide()"
+                            class="text-accent rounded-lg  hover:text-gray-600 duration-200 flex items-center text-lg font-medium cursor-pointer transition-colors font-body">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -151,8 +159,8 @@
                                             fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                                 d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586
-                                                                                                                                a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2
-                                                                                                                                0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                                                                                                                            a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2
+                                                                                                                                                            0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                         </svg>
                                         <span id="image-button-label">Select Image</span>
                                     </button>
@@ -261,6 +269,7 @@
         </div>
     </x.admin-admin-wrapper>
 
+    @include('admin.partials.post-guide-modal')
     <script>
         // Immediately execute this code for the meta description counter
         (function() {

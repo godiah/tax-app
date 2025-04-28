@@ -118,8 +118,6 @@
                                 </div>
                             </div>
                         </div>
-
-                        <!-- Actions Button with Dropdown -->
                     </div>
                 </div>
 
@@ -139,7 +137,7 @@
                         </button>
 
                         <!-- Comments Tab -->
-                        <button id="comments-btn"
+                        {{-- <button id="comments-btn"
                             class="flex items-center gap-2 p-4 font-medium border-b-2 border-transparent text-neutral-600 hover:text-secondary hover:border-secondary"
                             onclick="showTab('comments')">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none" viewBox="0 0 24 24"
@@ -148,7 +146,7 @@
                                     d="M8 10h.01M12 10h.01M16 10h.01M9 16H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-5l-5 5v-5z" />
                             </svg>
                             Comments
-                        </button>
+                        </button> --}}
                     </div>
                 </div>
 
@@ -273,11 +271,11 @@
                 </div>
 
                 {{-- Comments Pane --}}
-                <div id="comments-content" class="tab-content hidden px-6 py-5">
+                {{-- <div id="comments-content" class="tab-content hidden px-6 py-5">
                     <h3 class="text-lg font-heading font-bold text-primary mb-4">Comments</h3>
 
                     <p class="text-gray-500">No comments yet.</p>
-                </div>
+                </div> --}}
 
                 <!-- Related stats and metrics -->
                 <div class="px-6 py-5 border-t border-gray-100">
@@ -324,7 +322,7 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
+                        {{-- <div class="bg-white p-4 rounded-lg shadow-sm border border-gray-200">
                             <div class="flex items-center">
                                 <div class="p-2 rounded-full bg-accent bg-opacity-10 mr-3">
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none"
@@ -355,7 +353,7 @@
                                         {{ $post->shares_count ?? 0 }}</p>
                                 </div>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
 
@@ -379,12 +377,12 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
                                         viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5.882V19.24a1.76 1.76 0
-                                                         01-3.417.592l-2.147-6.15M18 13a3
-                                                         3 0 100-6M5.436 13.683A4.001
-                                                         4.001 0 017 6h1.832c4.1 0
-                                                         7.625-1.234 9.168-3v14c-1.543-1.766
-                                                         -5.067-3-9.168-3H7a3.988 3.988
-                                                         0 01-1.564-.317z" />
+                                                                     01-3.417.592l-2.147-6.15M18 13a3
+                                                                     3 0 100-6M5.436 13.683A4.001
+                                                                     4.001 0 017 6h1.832c4.1 0
+                                                                     7.625-1.234 9.168-3v14c-1.543-1.766
+                                                                     -5.067-3-9.168-3H7a3.988 3.988
+                                                                     0 01-1.564-.317z" />
                                     </svg>
                                     Publish Now
                                 </button>

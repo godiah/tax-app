@@ -24,15 +24,44 @@ class PostController extends Controller
     {
         $query = Post::with(['category', 'author', 'tags']);
 
-        // Filter by status if provided
-        if ($request->has('status')) {
+        // Search functionality
+        if ($request->has('search') && !empty($request->search)) {
+            $searchTerm = $request->search;
+            $query->where(function ($q) use ($searchTerm) {
+                $q->where('title', 'like', "%{$searchTerm}%")
+                    ->orWhere('content', 'like', "%{$searchTerm}%")
+                    ->orWhere('excerpt', 'like', "%{$searchTerm}%")
+                    ->orWhereHas('tags', function ($q) use ($searchTerm) {
+                        $q->where('name', 'like', "%{$searchTerm}%");
+                    });
+            });
+        }
+
+        // Filter by category
+        if ($request->has('category') && !empty($request->category)) {
+            $query->whereHas('category', function ($q) use ($request) {
+                $q->where('id', $request->category);
+            });
+        }
+
+        // Filter by status
+        if ($request->has('status') && !empty($request->status)) {
             $query->where('status', $request->status);
         }
 
-        $posts = $query->orderBy('created_at', 'desc')
-            ->paginate(10);
+        $posts = $query->orderBy('created_at', 'desc')->paginate(10);
 
-        return view('admin.posts.index', compact('posts'));
+        // Ensure pagination links maintain the current query parameters
+        $posts->appends($request->all());
+
+        if ($request->ajax()) {
+            return view('admin.posts.partials.posts-list', compact('posts'));
+        }
+
+        // Get all categories for filter dropdown
+        $categories = Category::all();
+
+        return view('admin.posts.index', compact('posts', 'categories'));
     }
 
     /**

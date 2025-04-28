@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Models\Category;
 use App\Models\Post;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use Spatie\Activitylog\Models\Activity;
 
 class DashboardController extends Controller
 {
@@ -42,6 +44,50 @@ class DashboardController extends Controller
             $changeType = 'no-change';
         }
 
-        return view('dashboard', compact('totalCategories', 'newCategories', 'totalPosts', 'changeType'));
+        // Total likes
+        $totalLikes = Post::sum('like_count');
+        $recentLikes = DB::table('post_likes')
+            ->where('created_at', '>=', now()->subDays(7))
+            ->count();
+
+        // Page Views
+        $totalViews = Post::sum('view_count');
+        $popularCategory = Category::select(
+            'categories.id',
+            'categories.name',
+            DB::raw('COALESCE(SUM(posts.view_count),0) as total_views')
+        )
+            ->leftJoin('posts', 'posts.category_id', '=', 'categories.id')
+            ->groupBy('categories.id', 'categories.name')
+            ->orderByDesc('total_views')
+            ->first();
+
+        $activities = Activity::with(['causer', 'subject'])
+            ->latest()
+            ->paginate(20);
+
+        return view(
+            'dashboard',
+            compact(
+                'totalCategories',
+                'newCategories',
+                'totalPosts',
+                'changeType',
+                'totalLikes',
+                'recentLikes',
+                'totalViews',
+                'popularCategory',
+                'activities'
+            )
+        );
     }
+
+    // public function recentActivity()
+    // {
+    //     $activities = Activity::with(['causer', 'subject'])
+    //         ->latest()
+    //         ->paginate(20);
+
+    //     return view('dashboard', compact('activities'));
+    // }
 }
