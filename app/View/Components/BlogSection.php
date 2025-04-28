@@ -6,23 +6,58 @@ use App\Models\Category;
 use App\Models\Post;
 use Closure;
 use Illuminate\Contracts\View\View;
+use Illuminate\Http\Request;
 use Illuminate\View\Component;
 
 class BlogSection extends Component
 {
     public $posts;
     public $categories;
+    public $featuredCategories;
+    public $moreCategories;
+    public $selectedCategory;
+    public $searchQuery;
 
-    public function __construct()
+    public function __construct(Request $request)
     {
-        // Fetch latest 3 published posts
-        $this->posts = Post::with(['category', 'tags', 'author'])
-            ->where('status', 'published')
-            ->latest('published_at')
-            ->paginate(3);
+        $this->selectedCategory = $request->category_id;
+        $this->searchQuery = $request->search;
 
-        // Fetch all categories, ordered by name
-        $this->categories = Category::orderBy('name')->get();
+        // Query builder for posts
+        $postsQuery = Post::with(['category', 'tags', 'author'])
+            ->where('status', 'published');
+
+        // Apply category filter if selected
+        if ($this->selectedCategory) {
+            $postsQuery->where('category_id', $this->selectedCategory);
+        }
+
+        // Apply search filter if provided
+        if ($this->searchQuery) {
+            $postsQuery->where(function ($query) {
+                $query->where('title', 'like', '%' . $this->searchQuery . '%')
+                    ->orWhere('excerpt', 'like', '%' . $this->searchQuery . '%')
+                    ->orWhere('content', 'like', '%' . $this->searchQuery . '%');
+            });
+        }
+
+        // Get posts with pagination (explicitly maintain page from request)
+        $this->posts = $postsQuery->latest('published_at')->paginate(3)->withQueryString();
+
+        // Get all categories ordered by post count
+        $allCategories = Category::withCount('posts')
+            ->having('posts_count', '>', 0)
+            ->orderByDesc('posts_count')
+            ->get();
+
+        // Set the first 2 categories as featured (to be shown directly)
+        $this->featuredCategories = $allCategories->take(2);
+
+        // The rest go to "More" dropdown
+        $this->moreCategories = $allCategories->slice(2);
+
+        // All categories (for other uses if needed)
+        $this->categories = $allCategories;
     }
 
     public function render()

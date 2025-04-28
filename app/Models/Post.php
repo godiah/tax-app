@@ -25,10 +25,17 @@ class Post extends Model
         'published_at',
         'meta_description',
         'view_count',
+        'like_count',
     ];
 
     protected $casts = [
         'published_at' => 'datetime',
+    ];
+
+    // Make sure columns have default values
+    protected $attributes = [
+        'view_count' => 0,
+        'like_count' => 0,
     ];
 
     // Define relationships
@@ -45,6 +52,13 @@ class Post extends Model
     public function tags()
     {
         return $this->belongsToMany(Tag::class);
+    }
+
+    // Relationship for likes
+    public function likedBy()
+    {
+        return $this->belongsToMany(User::class, 'post_likes', 'post_id', 'user_id')
+            ->withTimestamps();
     }
 
     /**

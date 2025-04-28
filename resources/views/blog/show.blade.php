@@ -146,16 +146,19 @@
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
                     </svg>
-                    <span>{{ $post->views ?? 0 }} views</span>
+                    <span>{{ $post->view_count }} views</span>
                 </div>
 
-                <button class="flex items-center text-sm text-border hover:text-accent transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
+                <button id="likeButton"
+                    class="flex items-center text-sm {{ $hasLiked ? 'text-accent' : 'text-border' }} hover:text-accent transition-colors"
+                    data-post-slug="{{ $post->slug }}" data-liked="{{ $hasLiked ? 'true' : 'false' }}">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1"
+                        fill="{{ $hasLiked ? 'currentColor' : 'none' }}" viewBox="0 0 24 24" stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                             d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />
                     </svg>
-                    <span>Like</span>
+                    <span id="likeText">{{ $hasLiked ? 'Liked' : 'Like' }}</span>
+                    <span id="likeCount" class="ml-1">({{ $post->like_count }})</span>
                 </button>
             </div>
 
@@ -196,6 +199,60 @@
             </div>
         </div>
     </article>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const likeButton = document.getElementById('likeButton');
+            if (!likeButton) return;
+
+            likeButton.addEventListener('click', function() {
+                const slug = this.dataset.postSlug;
+                const likeText = document.getElementById('likeText');
+                const likeCount = document.getElementById('likeCount');
+                const csrfToken = document.querySelector('meta[name="csrf-token"]').content;
+
+                fetch(`/posts/${slug}/like`, {
+                        method: 'POST',
+                        headers: {
+                            'Content-Type': 'application/json',
+                            'X-CSRF-TOKEN': csrfToken,
+                            'Accept': 'application/json',
+                        },
+                        credentials: 'same-origin',
+                    })
+                    .then(res => {
+                        if (!res.ok) throw new Error(`HTTP error! Status: ${res.status}`);
+                        return res.json();
+                    })
+                    .then(data => {
+                        if (!data.success) return;
+
+                        // toggle dataset & classes
+                        likeButton.dataset.liked = data.liked ? 'true' : 'false';
+                        likeButton.classList.toggle('text-accent', data.liked);
+                        likeButton.classList.toggle('text-border', !data.liked);
+
+                        // update SVG fill
+                        const svg = likeButton.querySelector('svg');
+                        if (svg) {
+                            svg.setAttribute('fill', data.liked ? 'currentColor' : 'none');
+                        }
+
+                        // update text label
+                        if (likeText) {
+                            likeText.textContent = data.liked ? 'Liked' : 'Like';
+                        }
+
+                        // update count
+                        if (likeCount) {
+                            likeCount.textContent = `(${data.likeCount})`;
+                        }
+                    })
+                    .catch(err => console.error('Error with like request:', err));
+            });
+        });
+    </script>
+
 
     <!-- Copy to Clipboard Script -->
     <script>
