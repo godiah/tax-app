@@ -16,8 +16,7 @@
 
         <div class="grid md:grid-cols-3 gap-6">
             <!-- Strategic Tax Planning and Structuring -->
-            <div data-aos="fade-up" data-aos-delay="100"
-                class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
+            <x-services-card>
                 <div class="relative overflow-hidden">
                     <img src="{{ asset('images/services/planning-2.jpg') }}" alt="Tax Strategy and Planning"
                         class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -47,11 +46,10 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </x-services-card>
 
             <!-- Tax Compliance and Risk Management -->
-            <div data-aos="fade-up" data-aos-delay="100"
-                class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
+            <x-services-card>
                 <div class="relative overflow-hidden">
                     <img src="{{ asset('images/services/compliance-2.jpg') }}" alt="Corporate Tax Strategy and Planning"
                         class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -81,11 +79,10 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </x-services-card>
 
             <!-- Tax Dispute Resolution & Advocacy -->
-            <div data-aos="fade-up" data-aos-delay="100"
-                class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
+            <x-services-card>
                 <div class="relative overflow-hidden">
                     <img src="{{ asset('images/services/litigation-2.jpg') }}" alt="Litigation & Tax Disputes"
                         class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -115,11 +112,10 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </x-services-card>
 
             <!-- Personalized Financial Guidance -->
-            <div data-aos="fade-up" data-aos-delay="100"
-                class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
+            <x-services-card>
                 <div class="relative overflow-hidden">
                     <img src="{{ asset('images/services/guidance.png') }}" alt="Personalized Financial Guidance"
                         class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -149,11 +145,10 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </x-services-card>
 
             <!-- Tax Training -->
-            <div data-aos="fade-up" data-aos-delay="100"
-                class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
+            <x-services-card>
                 <div class="relative overflow-hidden">
                     <img src="{{ asset('images/services/tax-training.png') }}" alt="Tax Training"
                         class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -183,11 +178,10 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </x-services-card>
 
             <!-- Tax Audit -->
-            <div data-aos="fade-up" data-aos-delay="100"
-                class="bg-white border border-gray-100 rounded-2xl overflow-hidden shadow-lg transform transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl group flex flex-col h-full">
+            <x-services-card>
                 <div class="relative overflow-hidden">
                     <img src="{{ asset('images/services/tax-audit.jpg') }}" alt="Tax Audit Support"
                         class="w-full h-[300px] object-cover transition-transform duration-300 group-hover:scale-105" />
@@ -217,7 +211,7 @@
                         </a>
                     </div>
                 </div>
-            </div>
+            </x-services-card>
         </div>
     </div>
 </section>

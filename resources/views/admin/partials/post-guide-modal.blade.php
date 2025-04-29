@@ -225,7 +225,6 @@
                     </li>
                     <li><strong>Lists</strong>: Ordered (1. 2. 3.) and unordered (* or -)</li>
                     <li><strong>Links</strong>: [Link text](https://example.com)</li>
-                    <li><strong>Images</strong>: ![Alt text](image-url.jpg)</li>
                     <li><strong>Blockquotes</strong>: > Quote text</li>
                     <li><strong>Code blocks</strong>: ```language code here ```</li>
                     <li><strong>Tables</strong>: | Header | Header | with row separators</li>

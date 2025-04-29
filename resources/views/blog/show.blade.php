@@ -163,28 +163,31 @@
             </div>
 
             <!-- Related Posts Section -->
-            <div class="mt-16 pt-8 border-t border-gray-300">
-                <h3 class="font-heading text-2xl text-primary mb-6">You might also like</h3>
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
-                    @foreach ($related as $item)
-                        <div class="bg-light rounded-lg p-4 hover:shadow-md transition-shadow flex flex-col h-full">
-                            <h4 class="font-heading text-lg text-primary mb-2 h-14 overflow-hidden">
+            @if ($related->count() > 0)
+                <div class="mt-16 pt-8 border-t border-gray-300">
+                    <h3 class="font-heading text-2xl text-primary mb-6">You might also like</h3>
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        @foreach ($related as $item)
+                            <div class="bg-light rounded-lg p-4 hover:shadow-md transition-shadow flex flex-col h-full">
+                                <h4 class="font-heading text-lg text-primary mb-2 h-14 overflow-hidden">
+                                    <a href="{{ route('blog.show', $item) }}"
+                                        class="line-clamp-2 hover:text-accent transition-colors">
+                                        {{ $item->title }}
+                                    </a>
+                                </h4>
+                                <p class="text-sm text-dark mb-3 line-clamp-2 font-body flex-grow h-10 overflow-hidden">
+                                    {{ Str::limit($item->excerpt ?? strip_tags($item->content), 80) }}
+                                </p>
                                 <a href="{{ route('blog.show', $item) }}"
-                                    class="line-clamp-2 hover:text-accent transition-colors">
-                                    {{ $item->title }}
+                                    class="text-xs text-accent hover:underline font-body mt-auto">
+                                    Read more →
                                 </a>
-                            </h4>
-                            <p class="text-sm text-dark mb-3 line-clamp-2 font-body flex-grow h-10 overflow-hidden">
-                                {{ Str::limit($item->excerpt ?? strip_tags($item->content), 80) }}
-                            </p>
-                            <a href="{{ route('blog.show', $item) }}"
-                                class="text-xs text-accent hover:underline font-body mt-auto">
-                                Read more →
-                            </a>
-                        </div>
-                    @endforeach
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
-            </div>
+            @endif
+
 
             <!-- Back to All Posts -->
             <div class="mt-10 font-body">

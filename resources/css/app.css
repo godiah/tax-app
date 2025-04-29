@@ -130,6 +130,30 @@ html {
     width: 100%;
     background-color: var(--color-primary);
 }
+/* Service Card */
+.hover-card {
+    /* Pre-define the shadow for better performance */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    /* Use GPU acceleration with will-change property */
+    will-change: transform, box-shadow;
+
+    /* Optimize transitions */
+    transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
+}
+
+.hover-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+}
+
+.hover-card .child-element {
+    transition: opacity 0.3s ease-out;
+}
+
+.hover-card:hover .child-element {
+    opacity: 1;
+}
 
 /* Custom scrollbar styling */
 .custom-scrollbar::-webkit-scrollbar {
@@ -286,20 +310,85 @@ html {
     margin: 1em 0;
 }
 
-.prose table {
+/* Table styling for both prose (rendered content) and SimpleMDE preview */
+.prose table,
+.editor-preview table,
+.editor-preview-side table {
     border-collapse: collapse;
     width: 100%;
-    margin: 1em 0;
+    margin: 1.5em 0;
+    font-family: var(--font-body);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
+    overflow: hidden;
 }
 
 .prose th,
-.prose td {
-    border: 1px solid #ddd;
-    padding: 0.5em;
+.prose td,
+.editor-preview th,
+.editor-preview td,
+.editor-preview-side th,
+.editor-preview-side td {
+    border: 1px solid #e2e8f0;
+    padding: 0.75em 1em;
+    text-align: left;
 }
 
-.prose th {
-    background-color: #f0f0f0;
+.prose thead,
+.editor-preview thead,
+.editor-preview-side thead {
+    background-color: var(--color-primary, #4a5568);
+    color: white;
+}
+
+.prose th,
+.editor-preview th,
+.editor-preview-side th {
+    font-weight: 600;
+}
+
+.prose tr:nth-child(even),
+.editor-preview tr:nth-child(even),
+.editor-preview-side tr:nth-child(even) {
+    background-color: #f7fafc;
+}
+
+/* Ensure the table is responsive */
+.prose .table-container,
+.editor-preview .table-container,
+.editor-preview-side .table-container {
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+/* In the SimpleMDE editor itself */
+.CodeMirror .cm-table {
+    color: var(--color-primary, #4a5568);
+    font-weight: 500;
+}
+
+/* Style the table markdown syntax for better visibility */
+.CodeMirror .cm-table-row {
+    border-bottom: 1px dotted #ccc;
+}
+
+.CodeMirror .cm-table-separator {
+    color: #888;
+    opacity: 0.7;
+}
+
+/* Add space after tables in the editor */
+.CodeMirror .cm-table + .cm-paragraph {
+    margin-top: 1em;
+}
+
+/* Table header styling in preview */
+.editor-preview th,
+.editor-preview-side th {
+    position: sticky;
+    top: 0;
+    z-index: 10;
+    background-color: var(--color-primary, #4a5568);
 }
 
 /* SimpleMDE specific styles */

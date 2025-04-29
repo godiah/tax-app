@@ -261,7 +261,7 @@
                                         <img src="{{ Storage::url($post->featured_image) }}"
                                             alt="{{ $post->title }}" class="w-full h-full object-cover">
                                     @else
-                                        <div class="h-full w-full bg-gradient-to-r from-primary to-secondary"></div>
+                                        <div class="h-full w-full bg-gradient-to-r from-primary to-accent"></div>
                                     @endif
                                 </div>
                                 <div class="p-6 flex flex-col flex-grow">

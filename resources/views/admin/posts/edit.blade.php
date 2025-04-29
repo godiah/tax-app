@@ -85,9 +85,10 @@
                                         class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10
-                                                               10.586l3.293-3.293a1 1 0
-                                                               111.414 1.414l-4 4a1 1 0
-                                                               01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                                           10.586l3.293-3.293a1 1 0
+                                                                           111.414 1.414l-4 4a1 1 0
+                                                                           01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                     </div>
                                 </div>
@@ -114,9 +115,10 @@
                                         class="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
                                             <path fill-rule="evenodd" d="M5.293 7.293a1 1 0 011.414 0L10
-                                                               10.586l3.293-3.293a1 1 0
-                                                               111.414 1.414l-4 4a1 1 0
-                                                               01-1.414 0l-4-4a1 1 0 010-1.414z" clip-rule="evenodd" />
+                                                                           10.586l3.293-3.293a1 1 0
+                                                                           111.414 1.414l-4 4a1 1 0
+                                                                           01-1.414 0l-4-4a1 1 0 010-1.414z"
+                                                clip-rule="evenodd" />
                                         </svg>
                                     </div>
                                 </div>
@@ -186,10 +188,10 @@
                                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2 text-gray-500"
                                         fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828
-                                                                            0L16 16m-2-2l1.586-1.586a2 2
-                                                                            0 012.828 0L20 14m-6-6h.01M6
-                                                                            20h12a2 2 0 002-2V6a2 2 0 00-2-2H6
-                                                                            a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                                                                        0L16 16m-2-2l1.586-1.586a2 2
+                                                                                        0 012.828 0L20 14m-6-6h.01M6
+                                                                                        20h12a2 2 0 002-2V6a2 2 0 00-2-2H6
+                                                                                        a2 2 0 00-2 2v12a2 2 0 002 2z" />
                                     </svg>
                                     <span id="image-button-label">
                                         {{ $post->featured_image ? 'Change Image' : 'Select Image' }}
@@ -284,8 +286,7 @@
                 toolbar: [
                     "bold", "italic", "heading", "|",
                     "quote", "unordered-list", "ordered-list", "|",
-                    "link", "image", "table", "|",
-                    "preview", "side-by-side", "fullscreen", "|",
+                    "link", "table", "preview", "|",
                     "guide"
                 ],
                 placeholder: "Write your post content using Markdown...",
