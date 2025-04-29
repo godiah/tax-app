@@ -8,7 +8,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="/" class="flex items-center">
-                        <img class="h-18 w-auto" src="{{ asset('images/logo.jpg') }}" alt="Logo">
+                        <img class="h-10 md:h-12 w-auto" src="{{ asset('images/logo.jpg') }}" alt="Logo">
                     </a>
                 </div>
 

@@ -23,6 +23,7 @@ Route::get('/', function () {
 // Blog Routes
 Route::get('/blog/{post:slug}', [BlogController::class, 'show'])->name('blog.show');
 Route::post('/posts/{post:slug}/like', [PostLikeController::class, 'toggle'])->name('posts.like')->middleware('web');
+Route::get('/blog/tag/{tag:slug}', [BlogController::class, 'postsByTag'])->name('blog.tag');
 
 // Authentication Routes
 Route::middleware('guest')->group(function () {

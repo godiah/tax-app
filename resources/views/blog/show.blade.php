@@ -6,8 +6,8 @@
     <article class="container mx-auto px-4 max-w-5xl py-8 pt-24">
         <div class="bg-white p-8 rounded-lg shadow my-12">
             <!-- Top Section: Logo, Date, Read Time, Category -->
-            <div class="flex flex-wrap items-center justify-between pb-6 border-b border-gray-300 mb-8">
-                <div class="flex items-center">
+            <div class="flex flex-wrap items-center justify-between pb-6 border-b border-gray-300 mb-8 gap-4">
+                <div class="w-full flex justify-center sm:w-auto sm:justify-start items-center">
                     <img src="{{ asset('images/logo.jpg') }}" alt="Logo" class="h-8 mr-4">
                 </div>
                 <div class="flex items-center text-xs text-border space-x-4 font-body">
@@ -62,10 +62,10 @@
             <div class="mt-8 mb-6">
                 <div class="flex flex-wrap gap-2 font-heading">
                     @foreach ($post->tags as $tag)
-                        <span
-                            class="inline-block bg-light hover:bg-gray-200 px-3 py-1 text-sm rounded-full text-dark transition-colors cursor-pointer">
+                        <a href="{{ route('blog.tag', $tag->slug) }}"
+                            class="inline-block bg-light hover:bg-gray-200 px-3 py-1 text-sm rounded-full text-dark transition-colors">
                             {{ $tag->name }}
-                        </span>
+                        </a>
                     @endforeach
                 </div>
             </div>

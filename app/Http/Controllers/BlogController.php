@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Category;
 use App\Models\Post;
+use App\Models\Tag;
 use App\Services\PostLikeService;
 use App\Services\PostViewService;
 use Illuminate\Http\Request;
@@ -46,5 +47,21 @@ class BlogController extends Controller
         }
 
         return view('blog.show', compact('post', 'related', 'hasLiked'));
+    }
+
+    /**
+     * Show all published posts for a given tag.
+     */
+    public function postsByTag(Tag $tag, Request $request)
+    {
+        $posts = $tag
+            ->posts()
+            ->with(['category', 'author', 'tags'])
+            ->where('status', 'published')
+            ->latest('published_at')
+            ->paginate(10)
+            ->withQueryString();
+
+        return view('blog.tag', compact('tag', 'posts'));
     }
 }

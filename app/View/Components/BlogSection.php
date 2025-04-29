@@ -34,15 +34,26 @@ class BlogSection extends Component
 
         // Apply search filter if provided
         if ($this->searchQuery) {
-            $postsQuery->where(function ($query) {
-                $query->where('title', 'like', '%' . $this->searchQuery . '%')
-                    ->orWhere('excerpt', 'like', '%' . $this->searchQuery . '%')
-                    ->orWhere('content', 'like', '%' . $this->searchQuery . '%');
+            $searchTerm = '%' . $this->searchQuery . '%';
+
+            $postsQuery->where(function ($query) use ($searchTerm) {
+                // Search in post content fields
+                $query->where('title', 'like', $searchTerm)
+                    ->orWhere('excerpt', 'like', $searchTerm)
+                    ->orWhere('content', 'like', $searchTerm)
+                    // Search in category name
+                    ->orWhereHas('category', function ($categoryQuery) use ($searchTerm) {
+                        $categoryQuery->where('name', 'like', $searchTerm);
+                    })
+                    // Search in tag names
+                    ->orWhereHas('tags', function ($tagQuery) use ($searchTerm) {
+                        $tagQuery->where('name', 'like', $searchTerm);
+                    });
             });
         }
 
         // Get posts with pagination (explicitly maintain page from request)
-        $this->posts = $postsQuery->latest('published_at')->paginate(3)->withQueryString();
+        $this->posts = $postsQuery->latest('published_at')->paginate(6)->withQueryString();
 
         // Get all categories ordered by post count
         $allCategories = Category::withCount('posts')
