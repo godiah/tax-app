@@ -119,10 +119,10 @@
                                         fill="currentColor">
                                         <path fill-rule="evenodd"
                                             d="M12 7a1 1 0 110-2h5a1 1 0 011 1v5a1 1 0 11-2 0V8.414l-4.293 4.293a1
-                                                                                                                                                                                                        1 0 01-1.414 0L8 10.414l-4.293
-                                                                                                                                                                                                        4.293a1 1 0 01-1.414-1.414l5-5a1
-                                                                                                                                                                                                        1 0 011.414 0L11 10.586 14.586
-                                                                                                                                                                                                        7H12z"
+                                                                                                                                                                                                                1 0 01-1.414 0L8 10.414l-4.293
+                                                                                                                                                                                                                4.293a1 1 0 01-1.414-1.414l5-5a1
+                                                                                                                                                                                                                1 0 011.414 0L11 10.586 14.586
+                                                                                                                                                                                                                7H12z"
                                             clip-rule="evenodd" />
                                         @if ($popularCategory)
                                             <span>{{ $popularCategory->name }}</span>
@@ -276,7 +276,8 @@
                     </div>
                     <p class="text-dark mb-4 font-body">Track engagement metrics and understand your audience better.</p>
                     <div class="flex flex-col space-y-2 font-body">
-                        <a href="#" class="flex items-center text-primary hover:text-accent transition-colors">
+                        <a href="{{ route('analytics') }}"
+                            class="flex items-center text-primary hover:text-accent transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -284,7 +285,7 @@
                             </svg>
                             View Performance
                         </a>
-                        <a href="#" class="flex items-center text-primary hover:text-accent transition-colors">
+                        {{-- <a href="#" class="flex items-center text-primary hover:text-accent transition-colors">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
                                 viewBox="0 0 24 24" stroke="currentColor">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -299,7 +300,7 @@
                                     d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
                             </svg>
                             Generate Reports
-                        </a>
+                        </a> --}}
                     </div>
                 </div>
             </div>

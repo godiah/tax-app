@@ -83,13 +83,4 @@ class DashboardController extends Controller
             )
         );
     }
-
-    // public function recentActivity()
-    // {
-    //     $activities = Activity::with(['causer', 'subject'])
-    //         ->latest()
-    //         ->paginate(20);
-
-    //     return view('dashboard', compact('activities'));
-    // }
 }
