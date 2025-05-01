@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ActivityController;
+use App\Http\Controllers\AnalyticController;
 use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\DashboardController;
@@ -70,4 +71,7 @@ Route::middleware('auth')->group(function () {
     Route::get('profile', [ProfileController::class, 'index'])->name('profile');
     Route::post('profile/password', [ProfileController::class, 'updatePassword'])->name('profile.password.update');
     Route::patch('profile', [ProfileController::class, 'updateProfile'])->name('profile.update');
+
+    // Analytics Routes
+    Route::get('analytics', [AnalyticController::class, 'index'])->name('analytics');
 });

@@ -204,43 +204,31 @@
         </div>
     </div>
 
-    <!-- Custom checkbox and password toggle script -->
+    <!-- Custom and password toggle script -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Terms checkbox functionality
-            const termsCheckbox = document.getElementById('terms');
-            const termsCheckboxDot = termsCheckbox.nextElementSibling.nextElementSibling;
-
-            termsCheckbox.addEventListener('change', function() {
-                if (this.checked) {
-                    termsCheckboxDot.classList.remove('hidden');
-                    termsCheckboxDot.classList.add('inline-block');
-                    termsCheckbox.nextElementSibling.classList.add('bg-primary');
-                } else {
-                    termsCheckboxDot.classList.add('hidden');
-                    termsCheckboxDot.classList.remove('inline-block');
-                    termsCheckbox.nextElementSibling.classList.remove('bg-primary');
-                }
-            });
-
             // Password toggle functionality
             const togglePassword = document.getElementById('togglePassword');
             const password = document.getElementById('password');
             const showPasswordIcon = document.getElementById('showPasswordIcon');
             const hidePasswordIcon = document.getElementById('hidePasswordIcon');
 
-            togglePassword.addEventListener('click', function() {
-                const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
-                password.setAttribute('type', type);
+            if (togglePassword && password && showPasswordIcon && hidePasswordIcon) {
+                togglePassword.addEventListener('click', function() {
+                    // Check if the password field is of type password
+                    const type = password.getAttribute('type') === 'password' ? 'text' : 'password';
+                    password.setAttribute('type', type);
 
-                if (type === 'text') {
-                    showPasswordIcon.classList.add('hidden');
-                    hidePasswordIcon.classList.remove('hidden');
-                } else {
-                    showPasswordIcon.classList.remove('hidden');
-                    hidePasswordIcon.classList.add('hidden');
-                }
-            });
+                    // Toggle visibility of icons
+                    if (type === 'text') {
+                        showPasswordIcon.classList.add('hidden');
+                        hidePasswordIcon.classList.remove('hidden');
+                    } else {
+                        showPasswordIcon.classList.remove('hidden');
+                        hidePasswordIcon.classList.add('hidden');
+                    }
+                });
+            }
 
             // Confirm Password toggle functionality
             const toggleConfirmPassword = document.getElementById('toggleConfirmPassword');
@@ -248,17 +236,33 @@
             const showConfirmPasswordIcon = document.getElementById('showConfirmPasswordIcon');
             const hideConfirmPasswordIcon = document.getElementById('hideConfirmPasswordIcon');
 
-            toggleConfirmPassword.addEventListener('click', function() {
-                const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
-                confirmPassword.setAttribute('type', type);
+            if (toggleConfirmPassword && confirmPassword && showConfirmPasswordIcon && hideConfirmPasswordIcon) {
+                toggleConfirmPassword.addEventListener('click', function() {
+                    // Check if the confirm password field is of type password
+                    const type = confirmPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+                    confirmPassword.setAttribute('type', type);
 
-                if (type === 'text') {
-                    showConfirmPasswordIcon.classList.add('hidden');
-                    hideConfirmPasswordIcon.classList.remove('hidden');
-                } else {
-                    showConfirmPasswordIcon.classList.remove('hidden');
-                    hideConfirmPasswordIcon.classList.add('hidden');
-                }
+                    // Toggle visibility of icons
+                    if (type === 'text') {
+                        showConfirmPasswordIcon.classList.add('hidden');
+                        hideConfirmPasswordIcon.classList.remove('hidden');
+                    } else {
+                        showConfirmPasswordIcon.classList.remove('hidden');
+                        hideConfirmPasswordIcon.classList.add('hidden');
+                    }
+                });
+            }
+
+            // For debugging purposes
+            console.log("Password toggle elements:", {
+                togglePassword: !!togglePassword,
+                password: !!password,
+                showPasswordIcon: !!showPasswordIcon,
+                hidePasswordIcon: !!hidePasswordIcon,
+                toggleConfirmPassword: !!toggleConfirmPassword,
+                confirmPassword: !!confirmPassword,
+                showConfirmPasswordIcon: !!showConfirmPasswordIcon,
+                hideConfirmPasswordIcon: !!hideConfirmPasswordIcon
             });
         });
     </script>

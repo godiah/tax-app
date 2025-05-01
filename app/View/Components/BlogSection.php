@@ -58,7 +58,7 @@ class BlogSection extends Component
         // Get all categories ordered by post count
         $allCategories = Category::withCount('posts')
             ->having('posts_count', '>', 0)
-            ->orderByDesc('posts_count')
+            ->orderBy('name')
             ->get();
 
         // Set the first 2 categories as featured (to be shown directly)
