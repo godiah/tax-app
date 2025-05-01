@@ -1,23 +1,24 @@
 <?php
 
+use Illuminate\Http\Request;
+use App\View\Components\BlogSection;
+use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TagController;
+use App\Http\Controllers\BlogController;
+use App\Http\Controllers\PostController;
+use App\Http\Controllers\LoginController;
+use App\Http\Controllers\ContactController;
+use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ActivityController;
 use App\Http\Controllers\AnalyticController;
-use App\Http\Controllers\BlogController;
 use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\ForgotPasswordController;
-use App\Http\Controllers\LoginController;
-use App\Http\Controllers\SubscriberController;
-use App\Http\Controllers\PostController;
 use App\Http\Controllers\PostLikeController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\RegisterController;
-use App\Http\Controllers\ResetPasswordController;
-use App\Http\Controllers\TagController;
+use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\UnsubscribeController;
-use App\View\Components\BlogSection;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\ResetPasswordController;
+use App\Http\Controllers\ForgotPasswordController;
 
 Route::get('/', function () {
     return view('home');
@@ -43,6 +44,7 @@ Route::middleware('guest')->group(function () {
     Route::post('/reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
     Route::post('/newsletter/subscribe', [SubscriberController::class, 'subscribe'])->name('newsletter.subscribe');
     Route::get('/newsletter/unsubscribe/{token}', [UnsubscribeController::class, 'unsubscribe'])->name('newsletter.unsubscribe');
+    Route::post('/send-enquiry', [ContactController::class, 'sendEmail'])->name('contact.send');
 });
 
 // Authenticated Routes
