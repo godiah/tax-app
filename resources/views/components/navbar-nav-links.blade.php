@@ -1,4 +1,11 @@
 @php
+
+    use Illuminate\Support\Str;
+
+    if (Str::startsWith($href, '#')) {
+        $href = url('/') . $href;
+    }
+
     $classes = $active
         ? 'nav-link active text-primary hover:text-accent font-medium text-sm font-secondary transition-colors duration-200 py-2 relative'
         : 'nav-link text-dark hover:text-accent font-medium text-sm font-secondary transition-colors duration-200 py-2 relative';

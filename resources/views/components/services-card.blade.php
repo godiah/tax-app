@@ -1,3 +1,4 @@
-<div class="flex-shrink-0 w-full h-auto flex items-center justify-center mb-4">
-    <img src="{{ asset($src) }}" alt="{{ $title }}" class="object-cover">
+<div data-aos="fade-up" data-aos-delay="100"
+    class="bg-white border border-gray-100 rounded-2xl overflow-hidden will-change-transform hover-card group flex flex-col h-full">
+    {{ $slot }}
 </div>

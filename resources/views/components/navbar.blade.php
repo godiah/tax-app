@@ -8,7 +8,7 @@
                 <!-- Logo -->
                 <div class="flex-shrink-0">
                     <a href="/" class="flex items-center">
-                        <img class="h-16 w-auto" src="{{ asset('images/logo.jpg') }}" alt="Logo">
+                        <img class="h-10 md:h-12 w-auto" src="{{ asset('images/logo.jpg') }}" alt="Logo">
                     </a>
                 </div>
 
@@ -26,6 +26,10 @@
                     {{-- <x-navbar-nav-links href="#testimonials" :active="request()->is('testimonials')">
                         Testimonials
                     </x-navbar-nav-links> --}}
+
+                    <x-navbar-nav-links href="#blog" :active="request()->is('blog')">
+                        Blog
+                    </x-navbar-nav-links>
                     <x-navbar-nav-links href="#contact" :active="request()->is('contact')">
                         Contact
                     </x-navbar-nav-links>
@@ -58,30 +62,37 @@
         <!-- Mobile menu -->
         <div class="hidden md:hidden" id="mobile-menu">
             <div class="px-2 pt-2 pb-4 space-y-2 bg-white border-t border-default">
-                <a href="#home"
-                    class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
+
+                <a href="/#home"
+                    class="mobile-nav-link block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
                     Home
                 </a>
-                <a href="#about"
-                    class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
+
+                <a href="/#about"
+                    class="mobile-nav-link block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
                     About
                 </a>
-                <a href="#services"
-                    class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
+
+                <a href="/#services"
+                    class="mobile-nav-link block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
                     Services
                 </a>
-                {{-- <a href="#testimonials"
-                    class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
-                    Testimonials
-                </a> --}}
-                <a href="#contact"
-                    class="block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
+
+                {{-- <a href="/#testimonials" class="mobile-nav-link …">Testimonials</a> --}}
+
+                <a href="/#blog"
+                    class="mobile-nav-link block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
+                    Blog
+                </a>
+
+                <a href="/#contact"
+                    class="mobile-nav-link block text-dark hover:text-primary hover:bg-light px-3 py-2.5 rounded-md text-base font-medium transition-colors duration-200">
                     Contact
                 </a>
 
-                <a href="#demo"
-                    class="block flex text-white px-4 py-2.5 rounded-md text-base font-medium transition-colors duration-200 mt-4 items-center justify-center
-                bg-gradient-to-r from-primary to-secondary shadow-lg hover:shadow-xl">
+                <a href="/#contact"
+                    class="mobile-nav-link skip-active block flex text-white px-4 py-2.5 rounded-md text-base font-medium transition-colors duration-200 mt-4 items-center justify-center
+                        bg-gradient-to-r from-primary to-secondary shadow-lg hover:shadow-xl">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24"
                         stroke="currentColor">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
@@ -96,65 +107,140 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Get all nav links
+        // Grab all nav-link anchors
         const navLinks = document.querySelectorAll('.nav-link');
-        // Get all sections that correspond to nav links
-        const sections = [];
-        navLinks.forEach(link => {
-            // Get the section ID from the href attribute (removing the # symbol)
-            const sectionId = link.getAttribute('href').substring(1);
-            const section = document.getElementById(sectionId);
-            if (section) {
-                sections.push(section);
-            }
-        });
-        // Function to set active link based on hash
-        const setActiveByHash = () => {
-            const currentHash = window.location.hash || '#home';
-            // Remove active class from all links
+
+        // Build a map of { link, sectionElement } for each fragment link
+        const linkSections = Array.from(navLinks)
+            .map(link => {
+                const id = link.hash.substring(1);
+                const section = document.getElementById(id);
+                return section ? {
+                    link,
+                    section
+                } : null;
+            })
+            .filter(x => x);
+
+        // Utility: reset all links to “inactive”
+        function resetLinks() {
             navLinks.forEach(link => {
-                link.classList.remove('active');
+                link.classList.remove('active', 'text-primary');
                 link.classList.add('text-dark', 'hover:text-accent');
-                link.classList.remove('text-primary');
             });
-            // Add active class to current link
+        }
+
+        // Utility: activate one link by its hash
+        function activateLinkByHash(hash) {
             navLinks.forEach(link => {
-                if (link.getAttribute('href') === currentHash) {
-                    link.classList.add('active', 'text-primary', 'hover:text-accent');
+                if (link.hash === hash) {
+                    link.classList.add('active', 'text-primary');
                     link.classList.remove('text-dark');
                 }
             });
-        };
-        // Function to set active link based on scroll position
-        const setActiveByScroll = () => {
-            let currentSection = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.offsetHeight;
-                // Check if we've scrolled to this section (with a small offset to trigger earlier)
-                if (window.scrollY >= (sectionTop - 100)) {
-                    currentSection = section.getAttribute('id');
+        }
+
+        // Set active based on path *or* hash
+        function setActiveByHashOrPath() {
+            resetLinks();
+
+            const path = window.location.pathname;
+            // If we're on any /blog/... route, force the blog link active
+            if (path.startsWith('/blog')) {
+                activateLinkByHash('#blog');
+                return;
+            }
+
+            // Otherwise highlight based on the fragment or default to home
+            const currentHash = window.location.hash || '#home';
+            activateLinkByHash(currentHash);
+        }
+
+        // Highlight based on scroll position (only on the SPA homepage)
+        function setActiveByScroll() {
+            let currentSectionId = null;
+
+            // Find the last section scrolled past
+            linkSections.forEach(({
+                section
+            }) => {
+                const top = section.offsetTop - 100;
+                if (window.scrollY >= top) {
+                    currentSectionId = section.id;
                 }
             });
-            if (currentSection !== '') {
-                // Remove active class from all links
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    link.classList.add('text-dark', 'hover:text-accent');
-                    link.classList.remove('text-primary');
-                    // Add active class to current section's link
-                    if (link.getAttribute('href') === `#${currentSection}`) {
-                        link.classList.add('active', 'text-primary', 'hover:text-accent');
-                        link.classList.remove('text-dark');
-                    }
-                });
+
+            if (currentSectionId) {
+                resetLinks();
+                activateLinkByHash('#' + currentSectionId);
             }
-        };
-        // Set active link on page load
-        setActiveByHash();
-        // Set active link when hash changes (when clicking nav links)
-        window.addEventListener('hashchange', setActiveByHash);
-        // Set active link when scrolling
-        window.addEventListener('scroll', setActiveByScroll);
+        }
+
+        // Initialize
+        setActiveByHashOrPath();
+
+        // Re-run on hash changes (e.g. clicking a nav link)
+        window.addEventListener('hashchange', setActiveByHashOrPath);
+
+        // Re-run on scroll—but skip when on /blog/* detail pages
+        window.addEventListener('scroll', () => {
+            if (!window.location.pathname.startsWith('/blog')) {
+                setActiveByScroll();
+            }
+        });
+    });
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // All mobile links (including CTA)
+        const mobileLinks = document.querySelectorAll('#mobile-menu .mobile-nav-link');
+
+        // Reset *only* those that are NOT marked skip-active
+        function resetMobileLinks() {
+            mobileLinks.forEach(link => {
+                if (link.classList.contains('skip-active')) return;
+                link.classList.remove('text-primary', 'bg-light');
+                link.classList.add('text-dark', 'hover:text-primary', 'hover:bg-light');
+            });
+        }
+
+        // Activate *only* those that are NOT marked skip-active
+        function activateMobileByHash(hash) {
+            mobileLinks.forEach(link => {
+                if (link.classList.contains('skip-active')) return;
+                if (link.hash === hash) {
+                    link.classList.add('text-primary', 'bg-light');
+                    link.classList.remove('text-dark');
+                }
+            });
+        }
+
+        function updateMobileActive() {
+            resetMobileLinks();
+
+            const path = window.location.pathname;
+            if (path.startsWith('/blog')) {
+                return activateMobileByHash('#blog');
+            }
+
+            const currentHash = window.location.hash || '#home';
+            activateMobileByHash(currentHash);
+        }
+
+        // Close menu & navigate when any mobile link is clicked
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                // if it's a fragment link
+                if (link.hash) {
+                    window.location.href = '/' + link.hash;
+                }
+                document.getElementById('mobile-menu').classList.add('hidden');
+            });
+        });
+
+        // Initialize & hook into hashchange
+        updateMobileActive();
+        window.addEventListener('hashchange', updateMobileActive);
     });
 </script>
