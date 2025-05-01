@@ -13,7 +13,7 @@ return [
     |
     */
 
-    'name' => env('APP_NAME', 'TaxgenConsultantsLLP'),
+    'name' => env('APP_NAME', 'Taxgen Consultants LLP'),
 
     /*
     |--------------------------------------------------------------------------

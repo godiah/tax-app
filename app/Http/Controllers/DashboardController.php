@@ -52,6 +52,7 @@ class DashboardController extends Controller
 
         // Page Views
         $totalViews = Post::sum('view_count');
+        $subscribers = DB::table('subscribers')->count();
         $popularCategory = Category::select(
             'categories.id',
             'categories.name',
@@ -77,7 +78,8 @@ class DashboardController extends Controller
                 'recentLikes',
                 'totalViews',
                 'popularCategory',
-                'activities'
+                'activities',
+                'subscribers'
             )
         );
     }

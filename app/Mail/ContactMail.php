@@ -25,7 +25,6 @@ class ContactMail extends Mailable implements ShouldQueue
     public function __construct(array $details)
     {
         $this->details = $details;
-        Log::info($this->details['email']);
     }
 
     /**

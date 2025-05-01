@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Category;
-use App\Models\Post;
 use App\Models\Tag;
-use Illuminate\Http\Request;
+use App\Models\Post;
+use App\Models\Category;
+use App\Models\Subscriber;
 use Illuminate\Support\Str;
+use App\Mail\NewsletterMail;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Storage;
+use League\CommonMark\MarkdownConverter;
 use League\CommonMark\CommonMarkConverter;
 use League\CommonMark\Environment\Environment;
 use League\CommonMark\Extension\CommonMark\CommonMarkCoreExtension;
-use League\CommonMark\MarkdownConverter;
 
 class PostController extends Controller
 {
@@ -121,6 +124,18 @@ class PostController extends Controller
 
         if ($request->has('tags')) {
             $post->tags()->attach($request->tags);
+        }
+
+        if ($post->status === 'published') {
+            // Send email notification to subscribers
+            $subscribers = Subscriber::where('status', 'subscribed')->get();
+            $blogUrl = route('blog.show', ['post' => $post->slug]);
+            $post->url = $blogUrl;
+
+            foreach ($subscribers as $subscriber) {
+                Mail::to($subscriber->email)
+                    ->queue(new NewsletterMail($post, $subscriber));
+            }
         }
 
         return redirect()->route('posts.index')

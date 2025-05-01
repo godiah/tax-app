@@ -24,7 +24,7 @@
                 selectedCategory: '{{ $selectedCategory ?? '' }}',
                 searchQuery: '{{ $searchQuery ?? '' }}',
                 currentPage: '{{ request()->get('page', 1) }}',
-            
+
                 // Filter posts by category (resets to page 1)
                 filterByCategory(categoryId) {
                     this.selectedCategory = categoryId;
@@ -33,70 +33,70 @@
                     // Close dropdown after selection on mobile
                     this.categoriesOpen = false;
                 },
-            
+
                 // Search posts (resets to page 1)
                 searchPosts() {
                     this.currentPage = 1; // Reset to page 1 when searching
                     this.fetchFilteredPosts();
                 },
-            
+
                 // Change page without changing filters
                 fetchFilteredPostsWithPage(page) {
                     this.currentPage = page;
                     this.fetchFilteredPosts();
-            
+
                     // Scroll to the top of blog section smoothly
                     document.getElementById('blog').scrollIntoView({ behavior: 'smooth' });
                 },
-            
+
                 // Fetch filtered posts with AJAX
                 fetchFilteredPosts() {
                     const url = new URL(window.location);
-            
+
                     // Update URL parameters without page reload
                     if (this.selectedCategory) {
                         url.searchParams.set('category_id', this.selectedCategory);
                     } else {
                         url.searchParams.delete('category_id');
                     }
-            
+
                     if (this.searchQuery) {
                         url.searchParams.set('search', this.searchQuery);
                     } else {
                         url.searchParams.delete('search');
                     }
-            
+
                     // Set page parameter
                     if (this.currentPage > 1) {
                         url.searchParams.set('page', this.currentPage);
                     } else {
                         url.searchParams.delete('page');
                     }
-            
+
                     // Update browser URL without refresh
                     window.history.pushState({}, '', url);
-            
+
                     // Show loading state
                     document.getElementById('posts-container').classList.add('opacity-50');
-            
+
                     // Fetch posts with AJAX
                     fetch(url)
                         .then(response => response.text())
                         .then(html => {
                             const parser = new DOMParser();
                             const doc = parser.parseFromString(html, 'text/html');
-            
+
                             // Update posts container with new content
                             document.getElementById('posts-container').innerHTML =
                                 doc.getElementById('posts-container').innerHTML;
-            
+
                             // Update pagination links
                             const paginationContainer = document.getElementById('pagination-container');
                             if (paginationContainer) {
                                 paginationContainer.innerHTML =
                                     doc.getElementById('pagination-container').innerHTML;
                             }
-            
+
                             // Remove loading state
                             document.getElementById('posts-container').classList.remove('opacity-50');
                         });
@@ -233,10 +233,10 @@
 
                         {{-- Search toggle button --}}
                         <button
-                            @click="searchOpen = !searchOpen; $nextTick(() => { 
-                            searchOpen ? 
-                                (window.innerWidth >= 1024 ? $refs.searchInputLg?.focus() : $refs.searchInputSm?.focus()) 
-                                : null 
+                            @click="searchOpen = !searchOpen; $nextTick(() => {
+                            searchOpen ?
+                                (window.innerWidth >= 1024 ? $refs.searchInputLg?.focus() : $refs.searchInputSm?.focus())
+                                : null
                         })"
                             class="p-2 rounded-full border border-default text-dark hover:bg-primary hover:text-white transition duration-300">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" fill="none"
@@ -383,12 +383,34 @@
                             important tax updates, deadline reminders, and expert advice.</p>
                     </div>
                     <div class="md:w-1/2 lg:w-2/5">
-                        <form class="flex flex-col sm:flex-row gap-3">
-                            <input type="email" placeholder="Your email address"
-                                class="flex-grow px-4 py-3 rounded-lg text-white font-semibold focus:outline-none border-2 border-accent "
-                                required>
-                            <button type="submit"
-                                class="bg-accent hover:bg-opacity-90 transition duration-300 text-white font-bold py-3 px-6 rounded-lg font-secondary">Subscribe</button>
+                        <form id="newsletterForm" class="flex flex-col gap-3">
+                            @csrf
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="newsletterEmail"
+                                    placeholder="Your email address"
+                                    class="flex-grow px-4 py-3 rounded-lg text-dark font-semibold focus:outline-none border-2 border-accent"
+                                    required
+                                >
+                                <button
+                                    type="submit"
+                                    id="newsletterSubmit"
+                                    class="bg-accent hover:bg-opacity-90 transition duration-300 text-white font-bold py-3 px-6 rounded-lg font-secondary disabled:opacity-50"
+                                >
+                                    <span id="submitText">Subscribe</span>
+                                    <span id="loadingSpinner" class="hidden">
+                                        <svg class="animate-spin h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <!-- Message Display -->
+                            <div id="messageDisplay" class="hidden text-sm mt-2"></div>
                         </form>
                     </div>
                 </div>
@@ -417,17 +439,99 @@
                             important tax updates, deadline reminders, and expert advice.</p>
                     </div>
                     <div class="md:w-1/2 lg:w-2/5">
-                        <form class="flex flex-col sm:flex-row gap-3">
-                            <input type="email" placeholder="Your email address"
-                                class="flex-grow px-4 py-3 rounded-lg text-white font-semibold focus:outline-none border-2 border-accent "
-                                required>
-                            <button type="submit"
-                                class="bg-accent hover:bg-opacity-90 transition duration-300 text-white font-bold py-3 px-6 rounded-lg font-secondary">Subscribe</button>
+                        <form id="newsletterForm" class="flex flex-col gap-3">
+                            @csrf
+                            <div class="flex flex-col sm:flex-row gap-3">
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="newsletterEmail"
+                                    placeholder="Your email address"
+                                    class="flex-grow px-4 py-3 rounded-lg text-dark font-semibold focus:outline-none border-2 border-accent"
+                                    required
+                                >
+                                <button
+                                    type="submit"
+                                    id="newsletterSubmit"
+                                    class="bg-accent hover:bg-opacity-90 transition duration-300 text-white font-bold py-3 px-6 rounded-lg font-secondary disabled:opacity-50"
+                                >
+                                    <span id="submitText">Subscribe</span>
+                                    <span id="loadingSpinner" class="hidden">
+                                        <svg class="animate-spin h-5 w-5 text-white inline" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+                                            <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                            <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                        </svg>
+                                    </span>
+                                </button>
+                            </div>
+
+                            <!-- Message Display -->
+                            <div id="messageDisplay" class="hidden text-sm mt-2"></div>
                         </form>
                     </div>
                 </div>
             </div>
-
         @endif
     </div>
 </section>
+
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('newsletterForm');
+    const submitBtn = document.getElementById('newsletterSubmit');
+    const submitText = document.getElementById('submitText');
+    const loadingSpinner = document.getElementById('loadingSpinner');
+    const messageDisplay = document.getElementById('messageDisplay');
+
+    form.addEventListener('submit', async function(e) {
+        e.preventDefault();
+
+        // Show loading state
+        submitBtn.disabled = true;
+        submitText.classList.add('hidden');
+        loadingSpinner.classList.remove('hidden');
+        messageDisplay.classList.add('hidden');
+
+        try {
+            const formData = new FormData(form);
+            const response = await fetch('{{ route('newsletter.subscribe') }}', {
+                method: 'POST',
+                headers: {
+                    'X-CSRF-TOKEN': document.querySelector('meta[name="csrf-token"]').content,
+                    'Accept': 'application/json'
+                },
+                body: formData
+            });
+
+            const data = await response.json();
+
+            if (!response.ok) {
+                throw new Error(data.message || 'Something went wrong');
+            }
+
+            // Show success message
+            messageDisplay.textContent = data.message;
+            messageDisplay.classList.remove('hidden', 'text-red-100');
+            messageDisplay.classList.add('text-green-100');
+            form.reset();
+
+        } catch (error) {
+            // Show error message
+            messageDisplay.textContent = error.message;
+            messageDisplay.classList.remove('hidden', 'text-green-100');
+            messageDisplay.classList.add('text-red-100');
+        } finally {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitText.classList.remove('hidden');
+            loadingSpinner.classList.add('hidden');
+            messageDisplay.classList.remove('hidden');
+
+            // Hide message after 5 seconds
+            setTimeout(() => {
+                messageDisplay.classList.add('hidden');
+            }, 5000);
+        }
+    });
+});
+</script>
