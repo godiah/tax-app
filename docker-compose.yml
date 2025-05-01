@@ -44,7 +44,7 @@ services:
       - .:/var/www
       - ./docker/php/local.ini:/usr/local/etc/php/conf.d/local.ini
     ports:
-      - "9000:9000"
+      - "127.0.0.1:9000:9000"
     env_file:
       - ./.env
     networks:
