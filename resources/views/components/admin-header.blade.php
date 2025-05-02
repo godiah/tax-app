@@ -76,7 +76,7 @@
                             </svg>
                             Login
                         </a>
-                        <a href="{{ route('register') }}"
+                        {{-- <a href="{{ route('register') }}"
                             class="bg-gradient-to-r from-primary to-primary-hover text-white py-2 px-4 rounded-md font-heading shadow-sm transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 transform flex items-center">
                             Register
                             <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
@@ -87,7 +87,7 @@
                                 <line x1="20" y1="8" x2="20" y2="14"></line>
                                 <line x1="23" y1="11" x2="17" y2="11"></line>
                             </svg>
-                        </a>
+                        </a> --}}
                     </div>
                 @else
                     <div class="flex items-center ml-4 pl-4 border-l border-gray-200">

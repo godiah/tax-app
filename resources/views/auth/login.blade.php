@@ -125,7 +125,7 @@
                     </div>
 
                     <!-- Registration Link -->
-                    <div class="text-center">
+                    {{-- <div class="text-center">
                         <div class="relative py-2 flex items-center justify-center">
                             <div class="absolute left-0 right-0 border-t border-gray-200"></div>
                             <span class="relative px-3 bg-white text-sm text-gray-500 font-body">Don't have an account
@@ -143,7 +143,7 @@
                                 <line x1="23" y1="11" x2="17" y2="11"></line>
                             </svg>
                         </a>
-                    </div>
+                    </div> --}}
                 </form>
             </div>
         </div>
