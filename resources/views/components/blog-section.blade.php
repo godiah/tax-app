@@ -388,7 +388,7 @@
                             <div class="flex flex-col sm:flex-row gap-3">
                                 <input type="email" name="email" id="newsletterEmail"
                                     placeholder="Your email address"
-                                    class="flex-grow px-4 py-3 rounded-lg text-dark font-semibold focus:outline-none border-2 border-accent"
+                                    class="flex-grow px-4 py-3 rounded-lg text-white font-semibold focus:outline-none border-2 border-accent"
                                     required>
                                 <button type="submit" id="newsletterSubmit"
                                     class="bg-accent hover:bg-opacity-90 transition duration-300 text-white font-bold py-3 px-6 rounded-lg font-secondary disabled:opacity-50">
