@@ -17,7 +17,7 @@
             <div class="bg-white rounded-xl p-6 shadow-lg mb-8" data-aos="zoom-in" data-aos-delay="300">
                 <div class="flex flex-col sm:flex-row items-center justify-center">
                     <div class="flex-grow text-center sm:text-left mb-4 sm:mb-0">
-                        <h3 class="text-xl font-heading font-semibold text-primary">Duncan Gateru, CPA</h3>
+                        <h3 class="text-xl font-heading font-semibold text-primary">Duncan Gateru, BSc(Applied Statistics), MA(Economics), CPA, MCIArb</h3>
                         <p class="text-dark-text text-sm">Senior Tax Consultant</p>
                     </div>
                     <div class="flex space-x-4">
