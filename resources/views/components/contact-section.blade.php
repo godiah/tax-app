@@ -42,7 +42,7 @@
                 </div>
 
                 <div class="space-y-4 font-secondary text-sm">
-                    <div class="flex items-center group">
+                    <div class="flex items-start group">
                         <div
                             class="bg-secondary/10 text-secondary p-2 rounded-lg mr-3 transition-transform duration-300 group-hover:-translate-y-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -53,10 +53,11 @@
                         </div>
                         <a href="mailto:info@taxgenconsulting.com"
                             class="text-dark-text hover:text-primary transition-colors duration-300">
+                            <span class="block font-medium text-primary/80 text-xs uppercase tracking-wide mb-0.5">Email</span>
                             info@taxgenconsulting.com
                         </a>
                     </div>
-                    <div class="flex items-center group">
+                    <div class="flex items-start group">
                         <div
                             class="bg-secondary/10 text-secondary p-2 rounded-lg mr-3 transition-transform duration-300 group-hover:-translate-y-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -67,10 +68,27 @@
                         </div>
                         <a href="tel:+254723881440"
                             class="text-dark-text hover:text-primary transition-colors duration-300">
+                            <span class="block font-medium text-primary/80 text-xs uppercase tracking-wide mb-0.5">Phone</span>
                             +254 (0) 723 881 440
                         </a>
                     </div>
-                    <div class="flex items-center group">
+                    <div class="flex items-start group">
+                        <div
+                            class="bg-secondary/10 text-secondary p-2 rounded-lg mr-3 transition-transform duration-300 group-hover:-translate-y-1">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4" />
+                            </svg>
+                        </div>
+                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode('Mobile Plaza, Nairobi, Kenya') }}"
+                            target="_blank" rel="noopener noreferrer"
+                            class="text-dark-text hover:text-primary transition-colors duration-300">
+                            <span class="block font-medium text-primary/80 text-xs uppercase tracking-wide mb-0.5">Address</span>
+                            P.O. Box 78930-00620, Mobile Plaza
+                        </a>
+                    </div>
+                    <div class="flex items-start group">
                         <div
                             class="bg-secondary/10 text-secondary p-2 rounded-lg mr-3 transition-transform duration-300 group-hover:-translate-y-1">
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24"
@@ -81,9 +99,12 @@
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                         </div>
-                        <span class="text-dark-text">
-                            Nairobi, Kenya
-                        </span>
+                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode('Trio Complex, Ground Floor, Garden Estate, Nairobi, Kenya') }}"
+                            target="_blank" rel="noopener noreferrer"
+                            class="text-dark-text hover:text-primary transition-colors duration-300">
+                            <span class="block font-medium text-primary/80 text-xs uppercase tracking-wide mb-0.5">Location</span>
+                            Trio Complex, Ground Floor, Garden Estate
+                        </a>
                     </div>
                 </div>
 
