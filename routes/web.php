@@ -19,6 +19,7 @@ use App\Http\Controllers\SubscriberController;
 use App\Http\Controllers\UnsubscribeController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgotPasswordController;
+use App\Http\Controllers\LetterheadController;
 
 Route::get('/', function () {
     return view('home');
@@ -80,4 +81,11 @@ Route::middleware('auth')->group(function () {
 
     // Analytics Routes
     Route::get('analytics', [AnalyticController::class, 'index'])->name('analytics');
+
+    // Letterhead
+    Route::get('letterhead', fn () => view('letterhead'))->name('letterhead');
+    Route::get('letterheads', [LetterheadController::class, 'preview'])->name('letterheads.preview');
+    Route::get('letterheads/{design}', [LetterheadController::class, 'show'])->name('letterheads.show')->whereNumber('design');
+    Route::get('letterheads/{design}/pdf', [LetterheadController::class, 'downloadPdf'])->name('letterheads.pdf')->whereNumber('design');
+    Route::get('letterheads/{design}/word', [LetterheadController::class, 'downloadWord'])->name('letterheads.word')->whereNumber('design');
 });

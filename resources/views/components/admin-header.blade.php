@@ -51,6 +51,15 @@
                         </svg>
                         Tags
                     </a>
+                    <a href="{{ route('letterheads.preview') }}"
+                        class="font-secondary {{ request()->routeIs('letterheads.*') ? 'text-accent' : 'text-dark hover:text-primary' }} hover:text-primary transition-colors px-3 py-2 rounded-md hover:bg-gray-50 flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Letterhead
+                    </a>
                     <a href="{{ url('/') }}" target="_blank"
                         class="font-secondary {{ request()->is('/') ? 'text-accent' : 'text-dark hover:text-primary' }} hover:text-primary transition-colors px-3 py-2 rounded-md hover:bg-gray-50 flex items-center">
                         <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-1" fill="none" viewBox="0 0 24 24"
@@ -200,6 +209,15 @@
                                 d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
                         </svg>
                         Tags
+                    </a>
+                    <a href="{{ route('letterheads.preview') }}"
+                        class="block py-2 px-3 {{ request()->routeIs('letterheads.*') ? 'text-accent bg-light' : 'text-dark' }} hover:bg-light rounded-md hover:text-primary font-secondary flex items-center">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none"
+                            viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                        </svg>
+                        Letterhead
                     </a>
                     <a href="{{ url('/') }}" target="_blank"
                         class="block py-2 px-3 text-dark hover:bg-light rounded-md hover:text-primary font-secondary flex items-center">

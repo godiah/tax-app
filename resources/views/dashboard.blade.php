@@ -171,7 +171,7 @@
             </div>
 
             <!-- Quick Access Section -->
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-6 mb-8">
                 <!-- Content Management -->
                 <div class="bg-white p-6 rounded-xl border border-default shadow-sm hover:shadow-md transition-all">
                     <div class="flex items-center justify-between mb-4">
@@ -258,6 +258,50 @@
                                     d="M17 14v6m-3-3h6M6 10h2a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2zm10 0h2a2 2 0 002-2V6a2 2 0 00-2-2h-2a2 2 0 00-2 2v2a2 2 0 002 2zM6 20h2a2 2 0 002-2v-2a2 2 0 00-2-2H6a2 2 0 00-2 2v2a2 2 0 002 2z" />
                             </svg>
                             Manage Tags
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Letterhead -->
+                <div class="bg-white p-6 rounded-xl border border-default shadow-sm hover:shadow-md transition-all">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="font-heading text-lg font-semibold text-primary">Letterheads</h4>
+                        <div class="p-2 bg-accent rounded-lg">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                        </div>
+                    </div>
+                    <p class="text-dark mb-4 font-body text-sm">Generate branded letterheads for official correspondence.</p>
+                    <div class="flex flex-col space-y-2 font-body">
+                        <a href="{{ route('letterheads.preview') }}"
+                            class="flex items-center text-primary hover:text-accent transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M4 6h16M4 10h16M4 14h7" />
+                            </svg>
+                            Browse All Designs
+                        </a>
+                        <a href="{{ route('letterheads.pdf', 1) }}"
+                            class="flex items-center text-primary hover:text-accent transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-accent" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                            </svg>
+                            Quick Download PDF
+                        </a>
+                        <a href="{{ route('letterheads.word', 1) }}"
+                            class="flex items-center text-primary hover:text-accent transition-colors">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-2 text-primary" fill="none"
+                                viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M12 10v6m0 0l-3-3m3 3l3-3M3 17V7a2 2 0 012-2h6l2 2h6a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2z" />
+                            </svg>
+                            Quick Download Word
                         </a>
                     </div>
                 </div>
