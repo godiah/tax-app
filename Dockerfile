@@ -13,11 +13,12 @@ RUN apt-get update && apt-get install -y \
     libpng-dev \
     libonig-dev \
     libxml2-dev \
+    libzip-dev \
     procps \
     net-tools \
     zip \
     unzip \
-    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd
+    && docker-php-ext-install pdo_mysql mbstring exif pcntl bcmath gd zip
 
 # Verify that php-fpm is installed
 RUN if ! which php-fpm; then echo "php-fpm not found"; exit 1; fi
