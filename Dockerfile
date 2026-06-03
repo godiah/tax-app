@@ -1,5 +1,5 @@
 # Build Stage 1: PHP Base with Composer
-FROM php:8.2-fpm AS base
+FROM php:8.3-fpm AS base
 
 # Set working directory
 WORKDIR /var/www
