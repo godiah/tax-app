@@ -85,6 +85,7 @@ Route::middleware('auth')->group(function () {
     // Letterhead
     Route::get('letterhead', fn () => view('letterhead'))->name('letterhead');
     Route::get('letterheads', [LetterheadController::class, 'preview'])->name('letterheads.preview');
+    Route::get('letterheads/signature', fn () => view('letterheads.signature'))->name('letterheads.signature');
     Route::get('letterheads/{design}', [LetterheadController::class, 'show'])->name('letterheads.show')->whereNumber('design');
     Route::get('letterheads/{design}/pdf', [LetterheadController::class, 'downloadPdf'])->name('letterheads.pdf')->whereNumber('design');
     Route::get('letterheads/{design}/word', [LetterheadController::class, 'downloadWord'])->name('letterheads.word')->whereNumber('design');

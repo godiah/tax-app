@@ -5,13 +5,25 @@
 @section('content')
 <div class="max-w-5xl mx-auto">
 
-    <div class="mb-8">
-        <h1 class="font-heading text-2xl font-bold text-primary mb-1">Letterhead Designs</h1>
-        <p class="font-secondary text-sm text-gray-500">
-            Preview any design, download as <span class="font-medium text-accent">PDF</span>
-            to send digitally, or as <span class="font-medium text-primary">Word (.docx)</span>
-            to type your own message before printing.
-        </p>
+    <div class="mb-8 flex flex-col md:flex-row md:items-start md:justify-between gap-4">
+        <div>
+            <h1 class="font-heading text-2xl font-bold text-primary mb-1">Letterhead Designs</h1>
+            <p class="font-secondary text-sm text-gray-500">
+                Preview any design, download as <span class="font-medium text-accent">PDF</span>
+                to send digitally, or as <span class="font-medium text-primary">Word (.docx)</span>
+                to type your own message before printing.
+            </p>
+        </div>
+        <a href="{{ route('letterheads.signature') }}"
+           class="inline-flex items-center gap-2 px-4 py-2.5 bg-white border border-primary text-primary
+                  text-sm font-secondary font-medium rounded-lg shadow-sm hover:bg-primary hover:text-white
+                  transition-colors whitespace-nowrap shrink-0">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                      d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+            </svg>
+            Get Email Signature Image
+        </a>
     </div>
 
     <div class="grid md:grid-cols-3 gap-6">

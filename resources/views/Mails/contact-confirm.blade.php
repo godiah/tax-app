@@ -1,44 +1,71 @@
-<!-- resources/views/Mails/contact-blade.php -->
-
 <!DOCTYPE html>
-<html>
+<html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Thank You for Contacting Taxgen Consultants</title>
 </head>
-<body style="font-family: 'Arial', sans-serif; line-height: 1.6; color: #333; margin: 0; padding: 0; background-color: #f4f4f4;">
-    <div style="max-width: 600px; margin: 20px auto; background-color: #ffffff; padding: 30px; border-radius: 8px; box-shadow: 0 2px 4px rgba(0,0,0,0.1);">
-        <!-- Header with Logo -->
-        <div style="text-align: center; margin-bottom: 30px;">
-            <img src="{{ config('app.url') . '/images/logo.png' }}" alt="Taxgen Consultants LLP" style="max-width: 200px;">
-        </div>
+<body style="margin:0; padding:0; background-color:#f0f0f0; font-family:Arial,sans-serif;">
 
-        <!-- Main Content -->
-        <div style="padding: 20px 0;">
-            <h1 style="color: #2c3e50; margin-bottom: 20px; font-size: 28px; text-align: center;">
-                Thank You for Reaching Out!
-            </h1>
+<table width="100%" border="0" cellpadding="0" cellspacing="0" style="background-color:#f0f0f0;">
+    <tr>
+        <td align="center" style="padding:24px 0;">
 
-            <p style="color: #555; font-size: 16px; margin-bottom: 20px;">
-                We've received your inquiry and appreciate you taking the time to contact us. Our team will review your message and get back to you as soon as possible.
-            </p>
+            <table width="600" border="0" cellpadding="0" cellspacing="0"
+                   style="background-color:#ffffff; border-collapse:collapse;">
 
-            <!-- What to Expect -->
-            <div style="margin-top: 30px;">
-                <h3 style="color: #2c3e50; margin-bottom: 15px;">What's Next?</h3>
-                <ul style="color: #555; padding-left: 20px;">
-                    <li style="margin-bottom: 10px;">Our team will carefully review your inquiry</li>
-                    <li style="margin-bottom: 10px;">We'll prepare a detailed response to your questions</li>
-                    <li style="margin-bottom: 10px;">You'll receive a follow-up email from our expert team</li>
-                </ul>
-            </div>
+                @include('Mails.partials.email-header')
 
-            <!-- Footer -->
-            <div style="margin-top: 40px; padding-top: 20px; border-top: 1px solid #eee; text-align: center; color: #666; font-size: 12px;">
-                <p>© {{ date('Y') }} Taxgen Consultants. All rights reserved.</p>
-            </div>
-        </div>
-    </div>
+                {{-- Content --}}
+                <tr>
+                    <td style="padding:32px 32px 8px 32px; font-family:Arial,sans-serif;
+                               font-size:14px; color:#333; line-height:1.7;">
+
+                        <h2 style="margin:0 0 16px 0; font-size:20px; color:#1f3b73; text-align:center;">
+                            Thank You for Reaching Out!
+                        </h2>
+
+                        <p style="margin:0 0 16px 0; font-size:14px; color:#555; text-align:center;">
+                            We've received your inquiry and will get back to you shortly.
+                        </p>
+
+                        <div style="background-color:#f8f9fa; padding:20px; margin:24px 0;
+                                    border-left:3px solid #e25822;">
+                            <p style="margin:0 0 10px 0; font-size:13px; font-weight:bold; color:#1f3b73;">
+                                What happens next?
+                            </p>
+                            <ul style="margin:0; padding-left:18px; color:#555; font-size:13px; line-height:1.9;">
+                                <li>Our team will carefully review your enquiry</li>
+                                <li>We'll prepare a detailed response to your questions</li>
+                                <li>You'll receive a follow-up from our expert team within 24&ndash;48 hours</li>
+                            </ul>
+                        </div>
+
+                        <p style="margin:0 0 24px 0; font-size:13px; color:#777; text-align:center;">
+                            In the meantime, feel free to call us directly on
+                            <a href="tel:+254723881440"
+                               style="color:#e25822; text-decoration:none; font-weight:bold;">
+                                (+254) 723-881-440
+                            </a>
+                        </p>
+
+                    </td>
+                </tr>
+
+                <tr>
+                    <td style="padding:0 32px 32px 32px; font-family:Arial,sans-serif;
+                               font-size:11px; color:#999; text-align:center;">
+                        This is an automated confirmation. Please do not reply to this email.
+                    </td>
+                </tr>
+
+                @include('Mails.partials.email-footer')
+
+            </table>
+
+        </td>
+    </tr>
+</table>
+
 </body>
 </html>
