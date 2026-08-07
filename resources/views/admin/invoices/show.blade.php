@@ -44,8 +44,8 @@
                     <form action="{{ route('invoices.send', $invoice) }}" method="POST"
                         onsubmit="return confirm('Email this invoice to {{ $invoice->client_email }}?');">
                         @csrf
-                        <button type="submit"
-                            class="inline-flex items-center px-4 py-2 bg-accent hover:bg-opacity-90 text-white text-sm font-medium rounded-md shadow">
+                        <button type="submit" data-loading-text="Sending..."
+                            class="js-loading-btn inline-flex items-center px-4 py-2 bg-accent hover:bg-opacity-90 text-white text-sm font-medium rounded-md shadow disabled:opacity-70 disabled:cursor-not-allowed">
                             Send to Client
                         </button>
                     </form>

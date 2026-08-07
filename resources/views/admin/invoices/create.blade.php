@@ -42,8 +42,8 @@
                     @include('admin.invoices._form')
 
                     <div class="mt-8 flex justify-end">
-                        <button type="submit"
-                            class="inline-flex items-center px-6 py-3 bg-accent hover:bg-opacity-90 text-white text-sm font-medium rounded-md shadow-lg transition-all duration-200 font-body">
+                        <button type="submit" data-loading-text="Raising Invoice..."
+                            class="js-loading-btn inline-flex items-center px-6 py-3 bg-accent hover:bg-opacity-90 text-white text-sm font-medium rounded-md shadow-lg transition-all duration-200 font-body disabled:opacity-70 disabled:cursor-not-allowed">
                             Raise Invoice
                         </button>
                     </div>
