@@ -46,7 +46,7 @@
                     <strong style="color:#1f3b73;">Email:</strong> info@taxgenconsulting.com
                 </div>
                 <div style="font-family:Arial,sans-serif; font-size:9px; color:#666; line-height:1.9;">
-                    <strong style="color:#1f3b73;">Office:</strong> Garden Estate, Nairobi
+                    <strong style="color:#1f3b73;">Office:</strong> Trio Complex, G-03, Thika Road
                 </div>
             </td>
         </tr>

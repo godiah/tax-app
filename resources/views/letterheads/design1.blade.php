@@ -39,7 +39,7 @@
             <td bgcolor="#e25822"
                 style="background-color:#e25822; padding:7px 24px; font-family:Arial,sans-serif;
                        font-size:9px; color:#ffffff; vertical-align:middle;">
-                &#9679; Trio Complex, Ground Floor, Garden Estate, Nairobi
+                &#9679; Trio Complex, Off Exit 7, Thika Road, G-03, Nairobi
             </td>
             <td bgcolor="#e25822"
                 style="background-color:#e25822; padding:7px 12px; font-family:Arial,sans-serif;

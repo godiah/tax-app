@@ -109,7 +109,7 @@ class LetterheadController extends Controller
         $strip->addRow(Converter::cmToTwip(0.65));
 
         $strip->addCell(Converter::cmToTwip(7), $this->cell('e25822'))
-              ->addText('Trio Complex, Ground Floor, Garden Estate, Nairobi',
+              ->addText('Trio Complex, Off Exit 7, Thika Road, G-03, Nairobi',
                   ['name' => 'Arial', 'size' => 8, 'color' => 'FFFFFF'],
                   ['spaceAfter' => 0, 'spaceBefore' => 0]);
 
@@ -208,7 +208,7 @@ class LetterheadController extends Controller
         foreach ([
             ['Phone:', '(+254) 723-881-440'],
             ['Email:', 'info@taxgenconsulting.com'],
-            ['Office:', 'Garden Estate, Nairobi'],
+            ['Office:', 'Trio Complex, G-03, Thika Road'],
         ] as [$label, $val]) {
             $cc->addText($label . ' ' . $val,
                 ['name' => 'Arial', 'size' => 8.5, 'color' => '555555'],
@@ -319,7 +319,7 @@ class LetterheadController extends Controller
         foreach ([
             'Tel: (+254) 723-881-440',
             'Email: info@taxgenconsulting.com',
-            'Office: Trio Complex, Garden Estate, Nairobi',
+            'Office: Trio Complex, G-03, Thika Road',
         ] as $line) {
             $rc->addText($line,
                 ['name' => 'Arial', 'size' => 8.5, 'color' => '555555'],

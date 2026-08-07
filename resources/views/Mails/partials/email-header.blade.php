@@ -34,7 +34,7 @@
         <table width="100%" border="0" cellpadding="0" cellspacing="0" style="border-collapse:collapse;">
             <tr>
                 <td style="color:#ffffff; font-size:9px; font-family:Arial,sans-serif; vertical-align:middle;">
-                    Trio Complex, Ground Floor, Garden Estate, Nairobi
+                    Trio Complex, Off Exit 7, Thika Road, G-03, Nairobi
                 </td>
                 <td style="color:#ffffff; font-size:9px; font-family:Arial,sans-serif;
                            vertical-align:middle; text-align:center;">

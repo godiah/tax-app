@@ -37,7 +37,7 @@
         <div style="background-color: #e25822; margin: 0 -32px; padding: 8px 32px;
                     display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 4px;">
             <span style="color: #fff; font-size: 10.5px; font-family: Arial, sans-serif;">
-                &#9679; Trio Complex, Ground Floor, Garden Estate, Nairobi
+                &#9679; Trio Complex, Off Exit 7, Thika Road, G-03, Nairobi
             </span>
             <span style="color: #fff; font-size: 10.5px; font-family: Arial, sans-serif;">
                 &#128222; (+254) 723-881-440

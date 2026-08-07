@@ -49,7 +49,7 @@
                 </div>
                 <div style="font-family:Arial,sans-serif; font-size:9.5px; color:#555; margin-top:3px;">
                     <span style="color:#1a3060; font-weight:bold;">Office:</span>
-                    Trio Complex, Ground Floor, Garden Estate, Nairobi &nbsp;&mdash;&nbsp;
+                    Trio Complex, Off Exit 7, Thika Road, G-03, Nairobi &nbsp;&mdash;&nbsp;
                     <span style="color:#1a3060; font-weight:bold;">P.O. Box:</span> 78930-00620
                 </div>
             </td>

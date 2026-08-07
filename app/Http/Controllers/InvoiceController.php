@@ -259,7 +259,7 @@ class InvoiceController extends Controller
         $strip->addRow(Converter::cmToTwip(0.65));
 
         $strip->addCell(Converter::cmToTwip(7), $this->cell('e25822'))
-            ->addText('Trio Complex, Ground Floor, Garden Estate, Nairobi',
+            ->addText('Trio Complex, Off Exit 7, Thika Road, G-03, Nairobi',
                 ['name' => 'Arial', 'size' => 8, 'color' => 'FFFFFF'], ['spaceAfter' => 0, 'spaceBefore' => 0]);
         $strip->addCell(Converter::cmToTwip(4), $this->cell('e25822', 'center'))
             ->addText('(+254) 723-881-440',

@@ -99,11 +99,11 @@
                                     d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
                             </svg>
                         </div>
-                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode('Trio Complex, Ground Floor, Garden Estate, Nairobi, Kenya') }}"
+                        <a href="https://www.google.com/maps/search/?api=1&query={{ urlencode('Trio Complex, Off Exit 7, Thika Road, Nairobi, Kenya') }}"
                             target="_blank" rel="noopener noreferrer"
                             class="text-dark-text hover:text-primary transition-colors duration-300">
                             <span class="block font-medium text-primary/80 text-xs uppercase tracking-wide mb-0.5">Location</span>
-                            Trio Complex, Ground Floor, Garden Estate
+                            Trio Complex, Off Exit 7, Thika Road, G-03
                         </a>
                     </div>
                 </div>
