@@ -37,3 +37,78 @@ document.addEventListener("DOMContentLoaded", function () {
         }
     });
 });
+
+/**
+ * Invoice line-item repeater (create/edit invoice forms).
+ * Purely for live UX feedback — totals are always recomputed server-side on save.
+ */
+document.addEventListener("DOMContentLoaded", function () {
+    const itemsBody = document.getElementById("invoice-items-body");
+    if (!itemsBody) return;
+
+    const addButton = document.getElementById("invoice-add-item");
+    const template = document.getElementById("invoice-item-row-template");
+    const taxRateInput = document.querySelector(".invoice-tax-rate");
+    const subtotalDisplay = document.getElementById("invoice-subtotal-display");
+    const taxDisplay = document.getElementById("invoice-tax-display");
+    const totalDisplay = document.getElementById("invoice-total-display");
+
+    function recalcRow(row) {
+        const qty = parseFloat(row.querySelector(".item-quantity").value) || 0;
+        const price = parseFloat(row.querySelector(".item-unit-price").value) || 0;
+        const amount = qty * price;
+        row.querySelector(".item-amount").textContent = amount.toFixed(2);
+        return amount;
+    }
+
+    function recalcTotals() {
+        let subtotal = 0;
+        itemsBody.querySelectorAll(".invoice-item-row").forEach((row) => {
+            subtotal += recalcRow(row);
+        });
+
+        const taxRate = taxRateInput ? parseFloat(taxRateInput.value) || 0 : 0;
+        const taxAmount = subtotal * (taxRate / 100);
+        const total = subtotal + taxAmount;
+
+        if (subtotalDisplay) subtotalDisplay.textContent = subtotal.toFixed(2);
+        if (taxDisplay) taxDisplay.textContent = taxAmount.toFixed(2);
+        if (totalDisplay) totalDisplay.textContent = total.toFixed(2);
+    }
+
+    itemsBody.addEventListener("input", function (event) {
+        if (
+            event.target.classList.contains("item-quantity") ||
+            event.target.classList.contains("item-unit-price")
+        ) {
+            recalcTotals();
+        }
+    });
+
+    itemsBody.addEventListener("click", function (event) {
+        if (event.target.classList.contains("invoice-remove-item")) {
+            const rows = itemsBody.querySelectorAll(".invoice-item-row");
+            if (rows.length > 1) {
+                event.target.closest(".invoice-item-row").remove();
+            } else {
+                rows[0].querySelectorAll("input").forEach((input) => {
+                    input.value = input.classList.contains("item-quantity") ? 1 : "";
+                });
+            }
+            recalcTotals();
+        }
+    });
+
+    if (addButton && template) {
+        addButton.addEventListener("click", function () {
+            const clone = template.content.cloneNode(true);
+            itemsBody.appendChild(clone);
+        });
+    }
+
+    if (taxRateInput) {
+        taxRateInput.addEventListener("input", recalcTotals);
+    }
+
+    recalcTotals();
+});

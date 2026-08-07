@@ -20,6 +20,7 @@ use App\Http\Controllers\UnsubscribeController;
 use App\Http\Controllers\ResetPasswordController;
 use App\Http\Controllers\ForgotPasswordController;
 use App\Http\Controllers\LetterheadController;
+use App\Http\Controllers\InvoiceController;
 
 Route::get('/', function () {
     return view('home');
@@ -81,6 +82,12 @@ Route::middleware('auth')->group(function () {
 
     // Analytics Routes
     Route::get('analytics', [AnalyticController::class, 'index'])->name('analytics');
+
+    // Invoice Routes
+    Route::resource('invoices', InvoiceController::class);
+    Route::get('invoices/{invoice}/pdf', [InvoiceController::class, 'downloadPdf'])->name('invoices.pdf');
+    Route::get('invoices/{invoice}/word', [InvoiceController::class, 'downloadWord'])->name('invoices.word');
+    Route::post('invoices/{invoice}/send', [InvoiceController::class, 'send'])->name('invoices.send');
 
     // Letterhead
     Route::get('letterhead', fn () => view('letterhead'))->name('letterhead');
