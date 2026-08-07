@@ -28,6 +28,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const titleValidationMessage = document.getElementById(
         "title-validation-message"
     );
+    if (!titleInput || !titleValidationMessage) return;
 
     titleInput.addEventListener("input", function () {
         const title = titleInput.value.trim();
@@ -72,6 +73,12 @@ document.addEventListener("DOMContentLoaded", function () {
     const subtotalDisplay = document.getElementById("invoice-subtotal-display");
     const taxDisplay = document.getElementById("invoice-tax-display");
     const totalDisplay = document.getElementById("invoice-total-display");
+
+    // Each row needs its own numeric items[N] index (PHP groups form fields by
+    // exact key, so items[][x] on multiple fields per row scatters them across
+    // different top-level indices instead of grouping them). Never reuse an
+    // index, even after a row is removed, so two rows can't collide.
+    let nextItemIndex = itemsBody.querySelectorAll(".invoice-item-row").length;
 
     function recalcRow(row) {
         const qty = parseFloat(row.querySelector(".item-quantity").value) || 0;
@@ -122,6 +129,12 @@ document.addEventListener("DOMContentLoaded", function () {
     if (addButton && template) {
         addButton.addEventListener("click", function () {
             const clone = template.content.cloneNode(true);
+            const index = nextItemIndex++;
+
+            clone.querySelectorAll("[name]").forEach((input) => {
+                input.name = input.name.replace("__INDEX__", index);
+            });
+
             itemsBody.appendChild(clone);
         });
     }

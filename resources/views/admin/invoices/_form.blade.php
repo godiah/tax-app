@@ -112,23 +112,23 @@
                     </tr>
                 </thead>
                 <tbody id="invoice-items-body">
-                    @foreach($rows as $row)
+                    @foreach($rows as $index => $row)
                         <tr class="invoice-item-row border-t border-gray-100">
                             <td class="py-2 px-3">
-                                <input type="text" name="items[][description]" value="{{ $row['description'] ?? '' }}"
+                                <input type="text" name="items[{{ $index }}][description]" value="{{ $row['description'] ?? '' }}"
                                     class="item-description w-full px-2 py-1.5 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" required>
                             </td>
                             <td class="py-2 px-3">
-                                <input type="number" step="0.01" min="0.01" name="items[][quantity]" value="{{ $row['quantity'] ?? 1 }}"
+                                <input type="number" step="0.01" min="0.01" name="items[{{ $index }}][quantity]" value="{{ $row['quantity'] ?? 1 }}"
                                     class="item-quantity w-full px-2 py-1.5 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" required>
                             </td>
                             <td class="py-2 px-3">
-                                <input type="number" step="0.01" min="0" name="items[][unit_price]" value="{{ $row['unit_price'] ?? '' }}"
+                                <input type="number" step="0.01" min="0" name="items[{{ $index }}][unit_price]" value="{{ $row['unit_price'] ?? '' }}"
                                     class="item-unit-price w-full px-2 py-1.5 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" required>
                             </td>
                             <td class="item-amount py-2 px-3 text-right font-medium text-gray-700">0.00</td>
                             <td class="py-2 px-3 text-center">
-                                <button type="button" class="invoice-remove-item text-red-500 hover:text-red-700" aria-label="Remove item">&times;</button>
+                                <button type="button" class="invoice-remove-item text-red-500 hover:text-red-700 cursor-pointer" aria-label="Remove item">&times;</button>
                             </td>
                         </tr>
                     @endforeach
@@ -137,7 +137,7 @@
         </div>
 
         <button type="button" id="invoice-add-item"
-            class="mt-3 inline-flex items-center px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-primary hover:bg-gray-50">
+            class="mt-3 inline-flex items-center px-3 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-primary hover:bg-gray-50 cursor-pointer">
             <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 mr-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
             </svg>
@@ -147,20 +147,20 @@
         <template id="invoice-item-row-template">
             <tr class="invoice-item-row border-t border-gray-100">
                 <td class="py-2 px-3">
-                    <input type="text" name="items[][description]" value=""
+                    <input type="text" name="items[__INDEX__][description]" value=""
                         class="item-description w-full px-2 py-1.5 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" required>
                 </td>
                 <td class="py-2 px-3">
-                    <input type="number" step="0.01" min="0.01" name="items[][quantity]" value="1"
+                    <input type="number" step="0.01" min="0.01" name="items[__INDEX__][quantity]" value="1"
                         class="item-quantity w-full px-2 py-1.5 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" required>
                 </td>
                 <td class="py-2 px-3">
-                    <input type="number" step="0.01" min="0" name="items[][unit_price]" value=""
+                    <input type="number" step="0.01" min="0" name="items[__INDEX__][unit_price]" value=""
                         class="item-unit-price w-full px-2 py-1.5 rounded-md border-gray-300 shadow-sm focus:border-primary focus:ring-primary sm:text-sm" required>
                 </td>
                 <td class="item-amount py-2 px-3 text-right font-medium text-gray-700">0.00</td>
                 <td class="py-2 px-3 text-center">
-                    <button type="button" class="invoice-remove-item text-red-500 hover:text-red-700" aria-label="Remove item">&times;</button>
+                    <button type="button" class="invoice-remove-item text-red-500 hover:text-red-700 cursor-pointer" aria-label="Remove item">&times;</button>
                 </td>
             </tr>
         </template>
