@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Barryvdh\DomPDF\Facade\Pdf;
 use PhpOffice\PhpWord\PhpWord;
 use PhpOffice\PhpWord\IOFactory;
+use PhpOffice\PhpWord\Settings;
 use PhpOffice\PhpWord\Shared\Converter;
 
 class LetterheadController extends Controller
@@ -395,6 +396,8 @@ class LetterheadController extends Controller
 
     private function baseWord(): PhpWord
     {
+        Settings::setOutputEscapingEnabled(true);
+
         $phpWord = new PhpWord();
         $phpWord->setDefaultFontName('Arial');
         $phpWord->setDefaultFontSize(11);
